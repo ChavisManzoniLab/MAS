@@ -2,7 +2,7 @@
 
 Machine-automated scoring of Pup retrieval test
 
-Mas is a pipeline allowing for an automatic scoring of pup retrieval test. It computes automatiquely multiple variables, including 
+Mas is a pipeline allowing for an automatic scoring of pup retrieval test. It computes automatically multiple variables, including 
 
 - Time to first encounter
 - Time to retrieve the pup
