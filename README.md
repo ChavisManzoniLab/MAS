@@ -1,8 +1,27 @@
-# MAS
+# MAS-PRT
+
+Machine-automated scoring of Pup retrieval test
+
+Mas is a pipeline allowing for an automatic scoring of pup retrieval test. It computes automatiquely multiple variables, including 
+
+- Time to first encounter
+- Time to retrieve the pup
+- Distance
+- Size of the Nest
+
+More information in *DOI*
+
+To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an automated detection of the Nest using Detectron2
 
 # Installation
 
+I suggest creating an environnement using venv command in python. 
+
+venv Environnement
+
 pip install truc ?
+
+A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
 
 # Utilization 
 
