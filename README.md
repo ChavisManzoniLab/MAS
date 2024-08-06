@@ -25,6 +25,7 @@ mypythonpath -m venv /path/to/new/virtual/environment
 pip install MasPRT
 
 A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
+Beware, Cuda version will be dependent of your GPU
 
 # Use 
 
