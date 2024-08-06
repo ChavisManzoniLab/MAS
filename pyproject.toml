@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "MasPRT"
+version = "0.1"
+authors = [
+  { name="Strauss Benjamin", email="Benjamin.strauss@inserm.fr" },
+]
+description = "Machine automated scoring for pup retrieval test"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/StraussBInserm/MAS"
+Issues = "https://github.com/StraussBInserm/MAS"
