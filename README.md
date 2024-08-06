@@ -26,7 +26,7 @@ pip install MasPRT
 
 A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
 
-# Utilization 
+# Use 
 
 ## I wish to use provided data 
 
