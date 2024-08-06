@@ -15,11 +15,14 @@ To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an 
 
 # Installation
 
-I suggest creating an environnement using venv command in python. 
+I suggest installing python 3.9 https://www.python.org/downloads/release/python-3913/ (I didn't try with other version, feel free to try)
+creating an environnement using venv command in python. 
 
-venv Environnement
+mypythonpath -m venv /path/to/new/virtual/environment
 
-pip install truc ?
+**Do not write mypythonpath, but link but your python 3.9.XX executable instead**
+
+pip install MasPRT
 
 A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
 
