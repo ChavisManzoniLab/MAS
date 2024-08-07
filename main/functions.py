@@ -20,7 +20,6 @@ def dist(B,A):
     Y =(A[1]-B[1])**2
     return m.sqrt(X+Y)
 
-
 def mean_calculator(df):
     #outputs a dataframe with the mean coordinates of the dam and the pup for each frame.
     #if not detected, the default value is -1.
@@ -99,7 +98,7 @@ def remove_outliers(df):
 def isGone(XcoordList,YcoordList, start):
     """
     Check if the pup does appear again. 
-    If not return True and the 'start' untouched
+    If not return True and the start frame
     If the pup reappear, return False and the frame of reappearence
     """
     X = 0
@@ -428,9 +427,9 @@ pathToCSV = r'C:\Users\bs\Desktop\zad/csv1'
 pathToOuput = r'C:\Users\bs\Desktop\zad/output/'
 
 def PRTAnalysis(pathToVid , detectorPath, pathToCSV, pathToOuput, useBackup = False):
-    frameExtract(pathToVid=pathToVid, framePerVid = 15)
+    frameExtract(pathToVid=pathToVid, framePerVid = 20)
     if useBackup :
-        with open('nestDict.pkl', 'rb') as f:
+        with open('backup/nestDict.pkl', 'rb') as f:
             Nestdict = pickle.load(f)    
     else:
         Nestdict = predictNest(detectorPath, str(pathToVid + "/frames"), visual = False )
