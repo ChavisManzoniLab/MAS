@@ -52,8 +52,13 @@ Once the model is satisfying, the new DLC model must be referenced in the code.
 
 ### Change Detectron2 Nest detection model
 
-Extract some frame from videos
-Use Roboflow to label the nest, then retrieve .coco format (I NEED TO WRITE MORE ON THAT)
-Train the detectron2 model using script.py
-Once the nest is satisfactory, the new nest inference must be referenced in the code. 
+To train another Detectron2 model, I would strongly suggest to use the method offered by LabGym. 
+
+https://github.com/umyelab/LabGym?tab=readme-ov-file#2-use-trained-detectors
+
+2 frames should be enough, depending on the quantity of video you have
+Once your model is satistying, you should modify the detectorPath accordingly with yours. 
+
+Now that you have LabGym on your computer, feel free to try it out ! 
+It's a formidable tool for quantifying behavior on videos :)
 
