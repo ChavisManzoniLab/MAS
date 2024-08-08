@@ -311,7 +311,7 @@ def timestampRead(pathToVideo, csv):
     return timestamps, vidName
 
 def outputResults(pathToCSV, pathToVideo, pathToOuput, polyDic):
-    #Write TOUT to CSV
+    #Write result in a CSV file
     dataf = pd.DataFrame(columns = ('video', 'success','success sec', 'firstEncounter', 'firstEncounter sec','timeFEtoRet', 'distanceToFirstEncounter', 'distanceFEtoRet'))
     pathToCSV = str(pathToCSV+"\*.csv")
     files = glob.glob(pathToCSV)
@@ -419,22 +419,24 @@ def draw_polygon_on_video(polygon, input_video_path, output_video_path):
     out.release()
     cv2.destroyAllWindows()
 
+
+
+def PRTAnalysis(pathToVid , detectorPath, pathToCSV, pathToOuput, useBackup = False, visual = False):
+    frameExtract(pathToVid=pathToVid, framePerVid = 20)
+    if useBackup :
+        with open('backup/nestDict.pkl', 'rb') as f:
+            Nestdict = pickle.load(f)    
+    else:
+        Nestdict = predictNest(detectorPath, str(pathToVid + "/frames"), visual = visual )
+        
+    outputResults(pathToCSV, pathToVideo=pathToVid, pathToOuput = pathToOuput, polyDic = Nestdict)
+    #draw_polygon_on_video(Nestdict["polygon"][0], pathTobox, outpath)
+
 outpath = r'C:\Users\bs\Desktop\zad\mdr2.mp4'
 pathTobox = r'C:\Users\bs\Desktop\zad\vido\2023-06-05 C4 T4 Masdig.mp4'
 pathToVid = r'C:\Users\bs\Desktop\zad\vidNew'
 detectorPath = r"C:\Users\bs\LabGym\Lib\site-packages\LabGym\detectors\Nest10"
 pathToCSV = r'C:\Users\bs\Desktop\zad/csv1'
 pathToOuput = r'C:\Users\bs\Desktop\zad/output/'
-
-def PRTAnalysis(pathToVid , detectorPath, pathToCSV, pathToOuput, useBackup = False):
-    frameExtract(pathToVid=pathToVid, framePerVid = 20)
-    if useBackup :
-        with open('backup/nestDict.pkl', 'rb') as f:
-            Nestdict = pickle.load(f)    
-    else:
-        Nestdict = predictNest(detectorPath, str(pathToVid + "/frames"), visual = False )
-        
-    outputResults(pathToCSV, pathToVideo=pathToVid, pathToOuput = pathToOuput, polyDic = Nestdict)
-    #draw_polygon_on_video(Nestdict["polygon"][0], pathTobox, outpath)
 
 PRTAnalysis(pathToVid , detectorPath, pathToCSV, pathToOuput, useBackup=False) 
