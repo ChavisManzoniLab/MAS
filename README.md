@@ -46,15 +46,25 @@ One Detectron2 model detecting the nest.
 
 ### Change maDeepLabcut model
 
+To change the maDeepLabCut model, I highly encourage to follow my tutorial to not recode my entire pipeline. 
 <details>
-  <summary>Expand by clicking to see the tutorial</summary>
+  <summary>Expand by clicking on the arrow to see the tutorial</summary>
   
-  Spoiler text. Note that it's important to have a space after the summary tag. You should be able to write any markdown you want inside the `<details>` tag... just make sure you close `<details>` afterward.
+  First, Create a new maDeepLabCut project 
   
-  ```javascript
-  console.log("I'm a code block!");
-  ```
-  
+  ![NewProject](https://github.com/user-attachments/assets/e0a40bd6-364e-4307-9a73-c4a921ce16aa)
+
+  Open the config.yaml with any text editor. It should look like this
+  ![Yaml](https://github.com/user-attachments/assets/149162f3-ddec-4df1-918c-5cebbd0dd02f)
+
+  Now, delete everything below the red line. 
+  Copy and paste the layout.yaml located in main/DLC/Layout into your config.yaml
+  /!\ Do not erase the first part, before the red line
+
+  Now, you can extract some frames, and try to start label frame.
+
+  IF your manipulation was good, the keypoint selection in Napari (down right) should look like the picture  
+  ![Success](https://github.com/user-attachments/assets/826ed7f4-d582-4940-bbb8-21c60e8e715c)
 </details>
 
 
