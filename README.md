@@ -15,7 +15,7 @@ To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an 
 
 # Installation
 
-I suggest installing python 3.9 https://www.python.org/downloads/release/python-3913/ (I didn't try with other version, feel free to try)
+I suggest installing python 3.9 https://www.python.org/downloads/release/python-3913/ (I didn't try with other version, feel free to try)\
 creating an environnement using venv command in python. 
 
 `mypythonpath -m venv /path/to/new/virtual/environment`
@@ -24,7 +24,7 @@ creating an environnement using venv command in python.
 
 `pip install MasPRT`
 
-A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
+A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. \
 Beware, Cuda version will be dependent of your GPU
 
 # Use 
@@ -33,12 +33,12 @@ Beware, Cuda version will be dependent of your GPU
 
 To open the environnment, use 
 
-`cd MYENVIRONNEMENTPATH`
+`cd MYENVIRONNEMENTPATH`\
 `scripts\activate`
 
 Once you are in the environnment, you can launch the GUI by writing :
 
-`cd main`
+`cd main`\
 `python -m gui.py`
 
 The interface should open
@@ -52,7 +52,7 @@ Use the provided script and link to your folder.
 
 The analysis is using 2 differents inferences : 
 
-One multianimal DeepLabCut model detecting the pup and the dam. 
+One multianimal DeepLabCut model detecting the pup and the dam. \
 One Detectron2 model detecting the nest. 
 
 ### Change maDeepLabcut model
@@ -68,8 +68,8 @@ To change the maDeepLabCut model, I highly encourage to follow my tutorial to no
   Open the config.yaml with any text editor. It should look like this
   ![Yaml](https://github.com/user-attachments/assets/149162f3-ddec-4df1-918c-5cebbd0dd02f)
 
-  Now, delete everything below the red line. 
-  Copy and paste the layout.yaml located in main/DLC/Layout into your config.yaml
+  Now, delete everything below the red line. \
+  Copy and paste the layout.yaml located in main/DLC/Layout into your config.yaml\
   /!\ Do not erase the first part, before the red line
 
   Now, you can extract some frames, and try to start label frame.
@@ -78,9 +78,9 @@ To change the maDeepLabCut model, I highly encourage to follow my tutorial to no
   ![Success](https://github.com/user-attachments/assets/826ed7f4-d582-4940-bbb8-21c60e8e715c)
 
   
-  This is how I label my frames.
-  Dam is the dam
-  single is the pup
+  This is how I label my frames.\
+  Dam is the dam\
+  single is the pup\
   The point names are self-explanatory, see image below. 
   ![image](https://github.com/user-attachments/assets/60d822fa-b52d-49e4-9b2c-7a3776c0e1d2)
   ![image](https://github.com/user-attachments/assets/5091cffd-0e47-4c6d-8cc6-ccf81732f8e0)
@@ -88,8 +88,8 @@ To change the maDeepLabCut model, I highly encourage to follow my tutorial to no
 
   (Don't be afraid if you have differents colors than me, It changes)
   
-  Now, it's up to you! Happy training !
-  See how to train a maDLC model : https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html
+  Now, it's up to you! Happy training !\
+  See how to train a maDLC model : https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html\
   Once the model is satisfying, the new DLC model must be referenced in the code. 
 
   
@@ -103,9 +103,9 @@ To train another Detectron2 model, I would strongly suggest to use the method of
 
 https://github.com/umyelab/LabGym?tab=readme-ov-file#2-use-trained-detectors
 
-2 frames should be enough, depending on the quantity of video you have
+2 frames should be enough, depending on the quantity of video you have\
 Once your model is satistying, you should modify the detectorPath accordingly with yours. 
 
-Now that you have LabGym on your computer, feel free to try it out ! 
+Now that you have LabGym on your computer, feel free to try it out ! \
 It's a formidable tool for quantifying behavior on videos :)
 
