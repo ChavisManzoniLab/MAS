@@ -48,7 +48,7 @@ One Detectron2 model detecting the nest.
 
 To change the maDeepLabCut model, I highly encourage to follow my tutorial to not recode my entire pipeline. 
 <details>
-  <summary>Expand by clicking on the arrow to see the tutorial</summary>
+  <summary>**Expand by clicking on the arrow to see the tutorial**</summary>
   
   First, Create a new maDeepLabCut project 
   
@@ -72,6 +72,9 @@ To change the maDeepLabCut model, I highly encourage to follow my tutorial to no
   single is the pup
   The point names are self-explanatory, see image below. 
   ![image](https://github.com/user-attachments/assets/60d822fa-b52d-49e4-9b2c-7a3776c0e1d2)
+  ![image](https://github.com/user-attachments/assets/5091cffd-0e47-4c6d-8cc6-ccf81732f8e0)
+  ![image](https://github.com/user-attachments/assets/c349c316-2b01-49af-b9f0-47eb65d51e2b)
+
   (Don't be afraid if you have differents colors than me, It changes)
   
   Now, it's up to you! Happy training !
