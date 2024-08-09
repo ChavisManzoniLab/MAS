@@ -48,7 +48,7 @@ One Detectron2 model detecting the nest.
 
 To change the maDeepLabCut model, I highly encourage to follow my tutorial to not recode my entire pipeline. 
 <details>
-  <summary>**Expand by clicking on the arrow to see the tutorial**</summary>
+  <summary>** Expand by clicking on the arrow to see the tutorial **</summary>
   
   First, Create a new maDeepLabCut project 
   
