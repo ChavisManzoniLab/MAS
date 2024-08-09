@@ -24,6 +24,9 @@ creating an environnement using venv command in python.
 
 `pip install MasPRT`\
 `python -m pip install git+https://github.com/facebookresearch/detectron2.git`
+`python -m pip install torch==2.0.1+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118` 
+/!\ THE LAST ONE MAY VARY DEPENDING ON YOUR GPU
+
 
 A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. \
 Beware, Cuda version will be dependent of your GPU
