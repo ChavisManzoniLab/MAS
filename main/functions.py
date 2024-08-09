@@ -432,11 +432,3 @@ def PRTAnalysis(pathToVid , detectorPath, pathToCSV, pathToOuput, useBackup = Fa
     outputResults(pathToCSV, pathToVideo=pathToVid, pathToOuput = pathToOuput, polyDic = Nestdict)
     #draw_polygon_on_video(Nestdict["polygon"][0], pathTobox, outpath)
 
-outpath = r'C:\Users\bs\Desktop\zad\mdr2.mp4'
-pathTobox = r'C:\Users\bs\Desktop\zad\vido\2023-06-05 C4 T4 Masdig.mp4'
-pathToVid = r'C:\Users\bs\Desktop\zad\vidNew'
-detectorPath = r"C:\Users\bs\LabGym\Lib\site-packages\LabGym\detectors\Nest10"
-pathToCSV = r'C:\Users\bs\Desktop\zad/csv1'
-pathToOuput = r'C:\Users\bs\Desktop\zad/output/'
-
-PRTAnalysis(pathToVid , detectorPath, pathToCSV, pathToOuput, useBackup=False) 

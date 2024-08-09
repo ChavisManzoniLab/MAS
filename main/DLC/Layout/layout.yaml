@@ -1,0 +1,97 @@
+individuals:
+- dam
+uniquebodyparts:
+- PupNose
+- PEar_left
+- pEar_right
+- PupNeck
+- PupCenter
+- PupTail
+multianimalbodyparts:
+- Nose
+- Ear_left
+- Ear_right
+- Center
+- Spine1
+- Spine2
+- Tail_base
+bodyparts: MULTI!
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
+start: 0
+stop: 1
+numframes2pick: 20
+
+    # Plotting configuration
+skeleton:
+- - Nose
+  - Ear_left
+- - Nose
+  - Spine1
+- - Center
+  - Spine1
+- - Nose
+  - Center
+- - Spine1
+  - Tail_base
+- - Nose
+  - Tail_base
+- - Ear_right
+  - Center
+- - Spine1
+  - Spine2
+- - Nose
+  - Ear_right
+- - Spine2
+  - Tail_base
+- - Nose
+  - Spine2
+- - Center
+  - Tail_base
+- - Ear_left
+  - Center
+- - Center
+  - Spine2
+- - PupNose
+  - PupNeck
+- - PupNose
+  - pEar_right
+- - PupNose
+  - PEar_left
+- - PEar_left
+  - PupNeck
+- - pEar_right
+  - PupNeck
+- - PupNeck
+  - PupCenter
+- - PupCenter
+  - PupTail
+skeleton_color: black
+pcutoff: 0.15
+dotsize: 3
+alphavalue: 0.7
+colormap: rainbow
+
+    # Training,Evaluation and Analysis configuration
+TrainingFraction:
+- 0.95
+iteration: 0
+default_net_type: dlcrnet_ms5
+default_augmenter: multi-animal-imgaug
+default_track_method: ellipse
+snapshotindex: -1
+batch_size: 8
+
+    # Cropping Parameters (for analysis and outlier frame detection)
+cropping: false
+    #if cropping is true for analysis, then set the values here:
+x1: 0
+x2: 640
+y1: 277
+y2: 624
+
+    # Refinement configuration (parameters from annotation dataset configuration also relevant in this stage)
+corner2move2:
+- 50
+- 50
+move2corner: true
