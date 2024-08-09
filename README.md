@@ -65,12 +65,23 @@ To change the maDeepLabCut model, I highly encourage to follow my tutorial to no
 
   IF your manipulation was good, the keypoint selection in Napari (down right) should look like the picture  
   ![Success](https://github.com/user-attachments/assets/826ed7f4-d582-4940-bbb8-21c60e8e715c)
+
+  
+  This is how I label my frames.
+  Dam is the dam
+  single is the pup
+  The point names are self-explanatory, see image below. 
+  ![image](https://github.com/user-attachments/assets/60d822fa-b52d-49e4-9b2c-7a3776c0e1d2)
+  (Don't be afraid if you have differents colors than me, It changes)
+  
+  Now, it's up to you! Happy training !
+  See how to train a maDLC model : https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html
+  Once the model is satisfying, the new DLC model must be referenced in the code. 
+
+  
 </details>
 
 
-Use the provided layout to train another maDeepLabCut model from scratch. 
-How to train a maDLC model : https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html
-Once the model is satisfying, the new DLC model must be referenced in the code. 
 
 ### Change Detectron2 Nest detection model
 
