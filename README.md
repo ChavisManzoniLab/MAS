@@ -31,7 +31,18 @@ Beware, Cuda version will be dependent of your GPU
 
 ## I wish to use provided data 
 
-Use the script XXXX.py and link to your folder
+To open the environnment, use 
+
+`cd MYENVIRONNEMENTPATH`
+`scripts\activate`
+
+Once you are in the environnment, you can launch the GUI by writing :
+
+`cd main`
+`python -m gui.py`
+
+The interface should open
+No more geek stuff for you 🥳
 
 ## I wish to use my data with the base models
 
