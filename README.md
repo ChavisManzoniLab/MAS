@@ -24,7 +24,7 @@ Create an environnement using venv command in python.
 
 `pip install MasPRT`\
 `python -m pip install torch==2.0.1+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118` \
-**/!\ THE ONE ABOVE MAY VARY DEPENDING ON YOUR GPU**
+**/!\ THE ONE ABOVE MAY VARY DEPENDING ON YOUR GPU** \
 `python -m pip install git+https://github.com/facebookresearch/detectron2.git`\
 
 
