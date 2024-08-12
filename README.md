@@ -16,7 +16,7 @@ To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an 
 # Installation
 
 I suggest installing python 3.9 https://www.python.org/downloads/release/python-3913/ (I didn't try with other version, feel free to try)\
-creating an environnement using venv command in python. 
+Create an environnement using venv command in python. 
 
 `mypythonpath -m venv /path/to/new/virtual/environment`
 
