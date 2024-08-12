@@ -13,7 +13,7 @@ More information in *DOI*
 
 To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an automated detection of the Nest using Detectron2
 
-# Installation
+# Suggested Installation
 
 I suggest installing python 3.9 https://www.python.org/downloads/release/python-3913/ (I didn't try with other version, feel free to try)\
 Create an environnement using venv command in python. 
