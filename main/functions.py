@@ -11,6 +11,7 @@ import stat
 import shutil
 from statistics import mean
 import config
+from inferenceMice import *
 
 def dist(B,A):
     """
@@ -421,14 +422,17 @@ def draw_polygon_on_video(polygon, input_video_path, output_video_path):
 
 
 
-def PRTAnalysis(pathToVid , detectorPath, pathToCSV, pathToOuput, useBackup = False, visual = False):
+def PRTAnalysis(pathToVid , detectorPath, pathToCSV, pathToOuput, useBackup = False, visual = False, useCSV = False):
     frameExtract(pathToVid=pathToVid, framePerVid = 20)
     if useBackup :
         with open('backup/nestDict.pkl', 'rb') as f:
             Nestdict = pickle.load(f)    
     else:
         Nestdict = predictNest(detectorPath, str(pathToVid + "/frames"), visual = visual )
+    if not useCSV :
+        inferenceMice(pathToVid)
+    destfolder = str(os.path.dirname(pathToVid) + '\csv')
         
-    outputResults(pathToCSV, pathToVideo=pathToVid, pathToOuput = pathToOuput, polyDic = Nestdict)
+    outputResults(pathToCSV = destfolder, pathToVideo=pathToVid, pathToOuput = pathToOuput, polyDic = Nestdict)
     #draw_polygon_on_video(Nestdict["polygon"][0], pathTobox, outpath)
 
