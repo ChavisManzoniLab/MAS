@@ -4,14 +4,9 @@ from tkinter import filedialog
 import glob
 from functions import *
 import tkinter.ttk
+from inferenceMice import *
 path = ' '
 
-outpath = r'C:\Users\bs\Desktop\zad\mdr2.mp4'
-pathTobox = r'C:\Users\bs\Desktop\zad\vido\2023-06-05 C4 T4 Masdig.mp4'
-pathToVid = r'C:\Users\bs\Desktop\zad\vidNew'
-detectorPath = r"C:\Users\bs\LabGym\Lib\site-packages\LabGym\detectors\Nest10"
-pathToCSV = r'C:\Users\bs\Desktop\zad/csv1'
-pathToOuput = r'C:\Users\bs\Desktop\zad/output/'
 
 
 def validate_float(var, min, max):
@@ -22,11 +17,10 @@ def validate_float(var, min, max):
         if flnew_value < min or flnew_value >max:
             raise
         validate_float.old_value = new_value
-        
+
     except:
         var.set(validate_float.old_value)
 
-validate_float.old_value = ''  # Define function attribute.
 
 def browseFiles():
     global path
@@ -42,7 +36,8 @@ def launchAnalyze(pathway):
     print(pathway) 
     useBackup = storedNest.get()
     useCSV = storedCSV.get()
-    visual = showPred.get()
+    visual = showNestPred.get()
+    drawPred = drawDLConVid.get()
     try:
         newNestthreshold = float(Nestthreshold.get())
         newDLCThreshold = float(threshold.get())
@@ -51,7 +46,10 @@ def launchAnalyze(pathway):
         window.quit
     if not glob.glob(pathway + '/*.mp4'):
         quit()
-    PRTAnalysis(pathToVid = pathway , detectorPath = detectorPath, pathToCSV = pathToCSV, pathToOuput = pathToOuput, useBackup=useBackup, visual = visual, useCSV = useCSV ) 
+    PRTAnalysis(videopath = pathway , useBackup=useBackup, visual = visual, useCSV = useCSV, 
+                nestBorderThreshold = newNestthreshold, DLCThreshold = newDLCThreshold ) 
+    if drawPred:
+        showPred(videopath = pathway, pcutoff = newDLCThreshold)
 
 
 window = tk.Tk()
@@ -72,19 +70,8 @@ buttonpath.grid(row = 0, column = 0,  padx = 1, pady = 2, )
 pathway = tk.Label( master = window,text=path)
 pathway.grid(row = 0, column = 1)
 
-button = tk.Button(
-    master = window,
-    text="Launch Analysis",
-    width=20,
-    height=3,
-    bg="limegreen",
-    fg="black",
-    command = lambda: launchAnalyze(path)
-)
 
 storedNest = tk.BooleanVar()
-showPred = tk.BooleanVar()
-drawNest = tk.BooleanVar()
 storedCSV = tk.BooleanVar()
 
 tk.ttk.Separator(master = window, orient = HORIZONTAL).grid(column = 0, row = 2 , columnspan=100, sticky="ew" )
@@ -111,13 +98,22 @@ tk.ttk.Separator(master = window, orient = HORIZONTAL).grid(column = 0, row = 9 
 
 storedText = tk.Label( master = window,text="Visualization :")
 storedText.grid(row = 15, column = 0)
-Checkbutton(master = window, text="Show nest prediction (slow)", variable=showPred).grid(row=16, column = 1, sticky=W)
+
+showNestPred = tk.BooleanVar()
+Checkbutton(master = window, text="Show nest prediction (slow)", variable=showNestPred).grid(row=16, column = 1, sticky=W)
+
+drawNest = tk.BooleanVar()
 Checkbutton(master = window, text="Create video with Nest (VERY slow)", variable=drawNest).grid(row=16, column = 0, sticky=W)
 
-tk.ttk.Separator(master = window, orient = HORIZONTAL).grid(column = 0, row = 17 , columnspan=100, sticky="ew" )
+drawDLConVid = tk.BooleanVar()
+Checkbutton(master = window, text="Show DeepLabCut prediction on video (VERY slow)", variable=drawDLConVid).grid(row=17, column = 0, sticky=W)
 
-button.grid(row = 18, column = 0, padx = 1, pady = 1)
+tk.ttk.Separator(master = window, orient = HORIZONTAL).grid(column = 0, row = 30 , columnspan=100, sticky="ew" )
 
-Button(master = window, text='Quit', command=window.quit).grid(row=18, column = 1, pady=4)
+buttonAnalyze = tk.Button( master = window, text="Launch Analysis", width=20,
+    height=3, bg="limegreen", fg="black", command = lambda: launchAnalyze(path) )
+buttonAnalyze.grid(row = 31, column = 0, padx = 1, pady = 1)
+
+Button(master = window, text='Quit', command=window.quit).grid(row=32, column = 1, pady=4)
 
 window.mainloop()

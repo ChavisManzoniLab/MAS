@@ -21,13 +21,12 @@ def dist(B,A):
     Y =(A[1]-B[1])**2
     return m.sqrt(X+Y)
 
-def mean_calculator(df):
+def mean_calculator(df, likelihood = 0.7):
     #outputs a dataframe with the mean coordinates of the dam and the pup for each frame.
     #if not detected, the default value is -1.
     frames = len(df)
     columns = ['t', 'damx', 'damy', 'pupx', 'pupy','damCenterx','damCentery']
     meandf = pd.DataFrame(columns = columns)
-    likelihood = 0.7 #threshold on the certainty of the prediction.
     sizeList = []
     for frame in range(frames):
         meandf.loc[frame, 't'] = frame
@@ -197,7 +196,7 @@ def distToNestBorder(polygon, x, y):
     animal = Point(x,y)
     return polygon.exterior.distance(animal)
 
-def success(df, poly):
+def success(df, poly, nestBorderThreshold = 10):
     """
     returns the frame of the PRT success
     
@@ -227,7 +226,7 @@ def success(df, poly):
         if df.loc[i,'pupx'] !=-1: #if the minimum is different from -1, the pup never disappears from the video.
             for i in range(0, len(df)):
                 try:
-                    if i in inNestList and distToNestBorder(poly, pupX[i], pupY[i]) > 30:
+                    if i in inNestList and distToNestBorder(poly, pupX[i], pupY[i]) > nestBorderThreshold:
                         print("PUP NEVER DISSARPEAR")
                         return i
                 except: break
@@ -241,11 +240,11 @@ def success(df, poly):
             for frame in range(i, iter):
                 print("for frame")
                 try:
-                    if (distToNestBorder(poly, damX[frame], damY[frame]) != None and distToNestBorder(poly, damX[frame], damY[frame] ) <= 10) or isNestPoly(poly, damX[frame], damY[frame]):
+                    if (distToNestBorder(poly, damX[frame], damY[frame]) != None and distToNestBorder(poly, damX[frame], damY[frame] ) <= nestBorderThreshold) or isNestPoly(poly, damX[frame], damY[frame]):
                         if pupgone == True:
                             print("innest")
                             return frame
-                        if isNestPoly(poly, pupX[frame], pupY[frame]) and distToNestBorder(poly, pupX[frame], pupY[frame]) > 40:
+                        if isNestPoly(poly, pupX[frame], pupY[frame]) and distToNestBorder(poly, pupX[frame], pupY[frame]) > nestBorderThreshold:
                             print("là")
                             return frame
                     if dam_isLost(df, frame):
@@ -279,7 +278,7 @@ def success(df, poly):
             print("wrong pup")
             continue
         try:
-            if distToNestBorder(poly, pupX[j], pupY[j]) > 30 and j < i:
+            if distToNestBorder(poly, pupX[j], pupY[j]) > nestBorderThreshold and j < i:
                 print("??")
                 return j
         except: break
@@ -311,7 +310,7 @@ def timestampRead(pathToVideo, csv):
 
     return timestamps, vidName
 
-def outputResults(pathToCSV, pathToVideo, pathToOuput, polyDic):
+def outputResults(pathToCSV, pathToVideo, pathToOutput, polyDic, nestBorderThreshold, DLCThreshold):
     #Write result in a CSV file
     dataf = pd.DataFrame(columns = ('video', 'success','success sec', 'firstEncounter', 'firstEncounter sec','timeFEtoRet', 'distanceToFirstEncounter', 'distanceFEtoRet'))
     pathToCSV = str(pathToCSV+"\*.csv")
@@ -324,7 +323,7 @@ def outputResults(pathToCSV, pathToVideo, pathToOuput, polyDic):
             timestamps, vidName = timestampRead(pathToVideo, str(path.basename(path.normpath(csv))))
             print("lentim",len(timestamps))
             df = pd.read_csv(csv, skiprows = 3)         
-            meandf, damSize = mean_calculator(df)
+            meandf, damSize = mean_calculator(df, likelihood = DLCThreshold)
             remove_outliers(meandf)
             dataf.loc[i, 'video'] = vidName
             f = firstEncounter(meandf)
@@ -377,11 +376,18 @@ def outputResults(pathToCSV, pathToVideo, pathToOuput, polyDic):
             dataf.loc[i, 'firstEncounter'] = None
             dataf.loc[i, 'distance'] = None
             dataf.loc[i, 'Area of Nest'] = None
-        
-    #print(csv, success(meandf, polyDic["polygon"][i]), dam_distance(meandf, stop = s), firstEncounter(meandf))
-    #/!\ CHANGER NOM FICHIER
-    data = pd.ExcelWriter(pathToOuput +'dataOutput_C2.xlsx', engine='xlsxwriter') #the output file with the success
-    dataf.to_excel(data, sheet_name='Sheet1', index=False)
+    
+    fileCreated = False
+    increment = 0
+    while not fileCreated:
+        try: 
+            data = pd.ExcelWriter(pathToOutput +'/dataOutput_' + str(increment) + '.xlsx' , mode = 'x', engine='xlsxwriter') #the output file with the success
+            fileCreated = True
+        except:
+            increment += 1
+        if increment >= 30:
+            raise ValueError("ANTIJAM")
+    dataf.to_excel(data, sheet_name='Results', index=False)
     data.close()
     print("DONE")
 
@@ -422,17 +428,16 @@ def draw_polygon_on_video(polygon, input_video_path, output_video_path):
 
 
 
-def PRTAnalysis(pathToVid , detectorPath, pathToCSV, pathToOuput, useBackup = False, visual = False, useCSV = False):
-    frameExtract(pathToVid=pathToVid, framePerVid = 20)
+def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, visual = False, useCSV = False, nestBorderThreshold = 10 , DLCThreshold = 0.7):
+    frameExtract(pathToVid=videopath, framePerVid = 20)
     if useBackup :
         with open('backup/nestDict.pkl', 'rb') as f:
             Nestdict = pickle.load(f)    
     else:
-        Nestdict = predictNest(detectorPath, str(pathToVid + "/frames"), visual = visual )
+        Nestdict = predictNest(detectorPath , str(videopath + "/frames"), visual = visual )
     if not useCSV :
-        inferenceMice(pathToVid)
-    destfolder = str(os.path.dirname(pathToVid) + '\csv')
-        
-    outputResults(pathToCSV = destfolder, pathToVideo=pathToVid, pathToOuput = pathToOuput, polyDic = Nestdict)
+        inferenceMice(videopath)
+    pathToOutput = str(os.path.dirname(videopath) + '/results')
+    destfolder = str(os.path.dirname(videopath) + '/csv')
+    outputResults(pathToCSV = destfolder, pathToVideo=videopath, pathToOutput = pathToOutput, polyDic = Nestdict, nestBorderThreshold = nestBorderThreshold, DLCThreshold = DLCThreshold)
     #draw_polygon_on_video(Nestdict["polygon"][0], pathTobox, outpath)
-
