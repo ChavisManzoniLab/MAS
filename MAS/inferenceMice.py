@@ -3,7 +3,7 @@ from os import path
 import shutil
 import deeplabcut
 import glob
-from config import *
+from MAS.config import *
 
 
 def inferenceMice(videopath):

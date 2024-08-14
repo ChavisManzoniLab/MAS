@@ -6,12 +6,12 @@ from os import mkdir, path
 from shapely import Polygon, Point
 import random
 import glob
-from InferenceNest import *
+from MAS.InferenceNest import *
 import stat
 import shutil
 from statistics import mean
-import config
-from inferenceMice import *
+import MAS.config
+from MAS.inferenceMice import *
 
 def dist(B,A):
     """
@@ -465,4 +465,3 @@ def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, vis
             print(vid)
             if "NestDraw" in vid:
                 shutil.move(os.path.join(videopath, vid), os.path.join(vidNest, vid))
-
