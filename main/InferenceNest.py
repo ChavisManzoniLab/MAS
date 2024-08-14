@@ -105,7 +105,7 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
     predictor=DefaultPredictor(cfg)                         
     #image_dir = str(image_dir+"\*.jpg")
     result = []
-    results = {"id" : [], "video" : [], "confidence" : [], "polygon" : [], "area" : [], 'rawpolygon' : []}
+    results = {"id" : [], "video" : [], "videopath" : [] , "confidence" : [], "polygon" : [], "area" : [], 'rawpolygon' : []}
     i = 0
     for folder in glob.glob(str(image_dir +"\*")):
         mask = []
@@ -163,7 +163,8 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
             plt.show()
 
         results["id"].append(i)
-        results["video"].append(str(folder))
+        results["video"].append(str(path.basename(path.normpath(folder))).replace(".mp4",""))
+        results["videopath"].append(str(folder))
         try:
             results["confidence"].append(result['instances'].scores.cpu().numpy()[0])
             results["polygon"].append(polygon)

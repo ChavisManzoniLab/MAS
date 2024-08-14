@@ -391,8 +391,11 @@ def outputResults(pathToCSV, pathToVideo, pathToOutput, polyDic, nestBorderThres
     data.close()
     print("DONE")
 
-def draw_polygon_on_video(polygon, input_video_path, output_video_path):
-    cap = cv2.VideoCapture(input_video_path)
+def drawNestOnVid(videopath, nestPoly, outputPath= None):
+    cap = cv2.VideoCapture(videopath)
+    if outputPath == None :
+        outputPath = str(videopath)
+        outputPath = outputPath.replace(".mp4","_NestDraw.mp4")
     if not cap.isOpened():
         print("Error: Couldn't open video file.")
         return
@@ -401,11 +404,10 @@ def draw_polygon_on_video(polygon, input_video_path, output_video_path):
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = cap.get(cv2.CAP_PROP_FPS)
-    num_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     
     # Define the codec and create VideoWriter object
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    out = cv2.VideoWriter(output_video_path, fourcc, fps, (frame_width, frame_height))
+    out = cv2.VideoWriter(outputPath, fourcc, fps, (frame_width, frame_height))
     
     # Draw polygon on every frame
     while cap.isOpened():
@@ -414,7 +416,7 @@ def draw_polygon_on_video(polygon, input_video_path, output_video_path):
             break
         
         # Draw polygon on the frame
-        polygon_points = np.array(polygon.exterior.coords, np.int32)
+        polygon_points = np.array(nestPoly.exterior.coords, np.int32)
         polygon_points = polygon_points.reshape((-1, 1, 2))
         cv2.polylines(frame, [polygon_points], isClosed=True, color=(0, 255, 120), thickness=2)
         
@@ -428,16 +430,39 @@ def draw_polygon_on_video(polygon, input_video_path, output_video_path):
 
 
 
-def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, visual = False, useCSV = False, nestBorderThreshold = 10 , DLCThreshold = 0.7):
-    frameExtract(pathToVid=videopath, framePerVid = 20)
+def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, visual = False, useCSV = False, drawNest = False, nestBorderThreshold = 10 , DLCThreshold = 0.7):
     if useBackup :
         with open('backup/nestDict.pkl', 'rb') as f:
-            Nestdict = pickle.load(f)    
+            nestDict = pickle.load(f)    
     else:
-        Nestdict = predictNest(detectorPath , str(videopath + "/frames"), visual = visual )
+        frameExtract(pathToVid=videopath, framePerVid = 20)
+        nestDict = predictNest(detectorPath , str(videopath + "/frames"), visual = visual )
     if not useCSV :
         inferenceMice(videopath)
     pathToOutput = str(os.path.dirname(videopath) + '/results')
     destfolder = str(os.path.dirname(videopath) + '/csv')
-    outputResults(pathToCSV = destfolder, pathToVideo=videopath, pathToOutput = pathToOutput, polyDic = Nestdict, nestBorderThreshold = nestBorderThreshold, DLCThreshold = DLCThreshold)
-    #draw_polygon_on_video(Nestdict["polygon"][0], pathTobox, outpath)
+    outputResults(pathToCSV = destfolder, pathToVideo=videopath, pathToOutput = pathToOutput, polyDic = nestDict, nestBorderThreshold = nestBorderThreshold, DLCThreshold = DLCThreshold)
+    if drawNest:
+        files =  glob.glob(str(videopath + '/*.mp4'))
+        for file in files:
+            video = str(path.basename(path.normpath(file))).replace(".mp4","")
+            try:
+                dictIndex = nestDict["video"].index(video)
+            except ValueError: 
+                print(video)
+                print("NO MATCHING VIDEO FOUND IN THE NEST DICT")
+                continue
+            try: 
+                drawNestOnVid(file, nestDict["polygon"][dictIndex])
+            except: 
+                print('DRAWING ERROR')
+                continue
+        vidList = os.listdir(videopath)
+        vidNest = str(os.path.dirname(videopath) + '/video_With_Nest')
+        if not path.isdir(vidNest) :
+            os.mkdir(vidNest)
+        for vid in vidList:
+            print(vid)
+            if "NestDraw" in vid:
+                shutil.move(os.path.join(videopath, vid), os.path.join(vidNest, vid))
+

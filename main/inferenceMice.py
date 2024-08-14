@@ -19,9 +19,9 @@ def showPred(videopath, pcutoff):
     for file in files:
         os.remove(os.path.join(videopath, file))
     vidList = os.listdir(videopath)
-    DLCTracking = str(os.path.dirname(videopath) + '\DLCTracking')
+    DLCTracking = str(os.path.dirname(videopath) + '/DLCTracking')
     if not path.isdir(DLCTracking) :
-        os.makedir(DLCTracking)
+        os.mkdir(DLCTracking)
     for vid in vidList:
         if "shuffle" in vid:
             shutil.move(os.path.join(videopath, vid), os.path.join(DLCTracking, vid))

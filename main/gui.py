@@ -38,6 +38,7 @@ def launchAnalyze(pathway):
     useCSV = storedCSV.get()
     visual = showNestPred.get()
     drawPred = drawDLConVid.get()
+    drawNestPred = drawNest.get()
     try:
         newNestthreshold = float(Nestthreshold.get())
         newDLCThreshold = float(threshold.get())
@@ -47,9 +48,7 @@ def launchAnalyze(pathway):
     if not glob.glob(pathway + '/*.mp4'):
         quit()
     PRTAnalysis(videopath = pathway , useBackup=useBackup, visual = visual, useCSV = useCSV, 
-                nestBorderThreshold = newNestthreshold, DLCThreshold = newDLCThreshold ) 
-    if drawPred:
-        showPred(videopath = pathway, pcutoff = newDLCThreshold)
+                nestBorderThreshold = newNestthreshold, DLCThreshold = newDLCThreshold , drawNest = drawNestPred) 
 
 
 window = tk.Tk()
@@ -110,7 +109,7 @@ Checkbutton(master = window, text="Show DeepLabCut prediction on video (VERY slo
 
 tk.ttk.Separator(master = window, orient = HORIZONTAL).grid(column = 0, row = 30 , columnspan=100, sticky="ew" )
 
-buttonAnalyze = tk.Button( master = window, text="Launch Analysis", width=20,
+buttonAnalyze = tk.Button( master = window, text="RUN", width=20,
     height=3, bg="limegreen", fg="black", command = lambda: launchAnalyze(path) )
 buttonAnalyze.grid(row = 31, column = 0, padx = 1, pady = 1)
 
