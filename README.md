@@ -43,8 +43,7 @@ To open the environnment, use
 
 Once you are in the environnment, you can launch the GUI by writing :
 
-`cd main`\
-`python -m gui.py`
+`python -m MAS`
 
 The interface should open \
 No more geek stuff for you 🥳
