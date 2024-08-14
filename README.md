@@ -46,7 +46,7 @@ Once you are in the environnment, you can launch the GUI by writing :
 `cd main`\
 `python -m gui.py`
 
-The interface should open
+The interface should open \
 No more geek stuff for you 🥳
 
 ## I wish to use my data with the base models
