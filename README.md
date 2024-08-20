@@ -22,7 +22,7 @@ Create an environnement using venv command in python.
 
 **Do not write mypythonpath, but link but your python 3.9.XX executable instead**
 
-`pip install MasPRT git+https://github.com/StraussBInserm/MAS.git`\
+`pip install git+https://github.com/StraussBInserm/MAS.git`\
 `python -m pip install torch==2.0.1+cu118 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118` \
 **/!\ THE ONE ABOVE MAY VARY DEPENDING ON YOUR GPU** \
 `python -m pip install git+https://github.com/facebookresearch/detectron2.git` 
