@@ -15,6 +15,22 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+
+]
+dependencies = [
+'deeplabcut'
+'matplotlib==3.7.2'
+'numpy==1.24.3'
+'opencv_contrib_python==4.8.0.76'
+'opencv_python==4.8.0.76'
+'pandas==2.0.3'
+'Pillow==10.4.0'
+'pycocotools==2.0.7'
+'Shapely==2.0.5'
+'tf-slim==1.1.0'
+'tensorpack==0.11'
+'tensorflow==2.10.0'
+'xlsxwriter'
 ]
 
 [project.urls]

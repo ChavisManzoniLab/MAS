@@ -7,9 +7,6 @@ import tkinter.ttk
 from MAS.inferenceMice import *
 path = ' '
 
-
-
-
 def GUI():
     def validate_float(var, min, max):
         new_value = var.get()

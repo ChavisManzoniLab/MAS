@@ -22,8 +22,18 @@ def dist(B,A):
     return m.sqrt(X+Y)
 
 def mean_calculator(df, likelihood = 0.7):
-    #outputs a dataframe with the mean coordinates of the dam and the pup for each frame.
-    #if not detected, the default value is -1.
+    """
+    Outputs a dataframe with the mean coordinates of the head of the dam and the pup for each frame.
+    if not detected, the default value is -1.
+    Also output the average size of the dam, in pixel
+
+    —————————
+    Arguments 
+    —————————
+    df : The CSV output from the maDLC script
+    likelihood : The lowest accepted likelihood for the points.
+    """
+
     frames = len(df)
     columns = ['t', 'damx', 'damy', 'pupx', 'pupy','damCenterx','damCentery']
     meandf = pd.DataFrame(columns = columns)
@@ -65,7 +75,7 @@ def mean_calculator(df, likelihood = 0.7):
                 pupy.append(df.iloc[frame, i+1])
                 
         if len(pupx)>2:
-            #if the number of detected points is less than two, the mean is not calculated
+            #if the number of detected points is less than 3, the mean is not calculated
             meandf.loc[frame, 'pupx'] = sum(pupx)/len(pupx)
             meandf.loc[frame, 'pupy'] = sum(pupy)/len(pupy)
         else : 
@@ -188,8 +198,9 @@ def isNestPoly(polygon, x, y):
 def distToNestBorder(polygon, x, y):
     """
     Return the distance of a coordinate to the exterior of the nest
-
-    Args : 
+    —————————
+    Arguments 
+    —————————
         polygon : A shapely polygon object
         x, y : coordinate
     """
@@ -199,10 +210,12 @@ def distToNestBorder(polygon, x, y):
 def success(df, poly, nestBorderThreshold = 10):
     """
     returns the frame of the PRT success
-    
-    Args : 
+    —————————
+    Arguments 
+    —————————
         df : A pandas dataframe returned from mean_calculator()
-        polygon : A shapely polygon object
+        poly : A shapely polygon object
+        nestBorderThreshold : The threshold of the nest, in pixel
     """
     i = 2
     pupX = pd.to_numeric(df['pupx'])
@@ -286,12 +299,15 @@ def success(df, poly, nestBorderThreshold = 10):
 
 def timestampRead(pathToVideo, csv):
   
-    # Search for the corresponding .MP4
+    """
+    Get the frame value in second of the video. Useful when videos are corrupted
+    """
     vidName = csv.split('_')[0]
     vidName = vidName.replace('DLC', '')
     video = pathToVideo +'\\'+ vidName + ".mp4"
     cap = cv2.VideoCapture(video)
     timestamps = []
+
     # Read each frame in a video to assess the corresponding timestamp
     if cap.isOpened():
 
@@ -344,7 +360,7 @@ def outputResults(pathToCSV, pathToVideo, pathToOutput, polyDic, nestBorderThres
                 dataf.loc[i, 'firstEncounter sec'] = None
                 dataf.loc[i,'distanceToFirstEncounter'] = None
                 dataf.loc[i,'distanceToFirstEncounter cm'] = None
-            s = success(meandf, polyDic["polygon"][i])
+            s = success(meandf, polyDic["polygon"][i], nestBorderThreshold)
             print(csv)
             print(s)
             if s != None: #If success, get the frames in seconds 
@@ -428,15 +444,31 @@ def drawNestOnVid(videopath, nestPoly, outputPath= None):
     out.release()
     cv2.destroyAllWindows()
 
+def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, showNest = False, useCSV = False, drawNest = False, nestBorderThreshold = 10 , DLCThreshold = 0.7):
+    """
+    The main function
+    Launch the detection of the nest via detectron2
+    Launch the detection of the mice via maDLC
+    Pass the result through the MAS pipeline and output results in results folders
 
-
-def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, visual = False, useCSV = False, drawNest = False, nestBorderThreshold = 10 , DLCThreshold = 0.7):
+    —————————
+    Arguments 
+    —————————
+    pathToVid : The path to the video folder. Videos must be in MP4    
+    detectorPath : Path to the Detectron2 detector 
+    useBackup => Boolean : Use the .pickle file to gain time. Use only if videos are the same
+    showNest : display the nest polygon on matplotlib
+    useCSV => Boolean : Use the .CSV outputted from maDLC.  
+    drawNest => Boolean : Create a video with the estimated polygon nest drawn on the video. Outputted in video_With_Nest folder
+    nestBorderThreshold : 
+    """
+    
     if useBackup :
         with open('backup/nestDict.pkl', 'rb') as f:
             nestDict = pickle.load(f)    
     else:
         frameExtract(pathToVid=videopath, framePerVid = 20)
-        nestDict = predictNest(detectorPath , str(videopath + "/frames"), visual = visual )
+        nestDict = predictNest(detectorPath , str(videopath + "/frames"), visual = showNest )
     if not useCSV :
         inferenceMice(videopath)
     pathToOutput = str(os.path.dirname(videopath) + '/results')

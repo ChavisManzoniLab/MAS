@@ -27,7 +27,19 @@ min_area_threshold = 250
 
 
 def frameExtract(pathToVid, framePerVid = 1):
-    """Extract random frames for each video in pathToVid """
+    """Extract random frames for each video in pathToVid
+    The frames selected are not completely random.
+    Instead, the video is divided by how many frame needs to be extracted
+    Each frame is then selected in each segments, allowing for a more linear extraction
+    The frames are extracted in a 'frame' folder inside the video folders. 
+
+    —————————
+    Arguments 
+    —————————
+        pathToVid : The path to the video folder. Videos must be in MP4    
+        frameperVid : The number of frame to extract per video. 
+       
+       """
     pathToVideo = str(pathToVid+"\*.mp4")
      #Clear target output directory if needed
     output = glob.glob(str(pathToVid + "/frames/")) 
