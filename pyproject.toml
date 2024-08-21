@@ -25,6 +25,7 @@ dependencies = [
 'tensorpack==0.11',
 'tensorflow==2.10.0',
 'xlsxwriter',
+'gdown'
 ]
 classifiers = [
     "Programming Language :: Python :: 3",

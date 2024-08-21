@@ -22,6 +22,7 @@ import stat
 import shutil
 from statistics import mean
 import pickle 
+from MAS.config import ROOT
 
 min_area_threshold = 250
 
@@ -190,9 +191,9 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
         
         i += 1 
     
-    filename = r'C:\Users\bs\Mas\backup'
+    filename = ROOT
     os.makedirs(str(filename), exist_ok=True)
-    with open(filename+ '\\nestDict.pkl', 'wb') as f:
+    with open(filename+ '\\Models\\nestDict.pkl', 'wb') as f:
         pickle.dump(results, f)
     return results
 
