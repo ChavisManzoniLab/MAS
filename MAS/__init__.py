@@ -19,6 +19,9 @@ if torch.cuda.is_available():
 else: 
 	("TORCH NOT WORKING ON GPU")
 
+print("███████████████████████████████████████████████████████████")
+
+
 print("CHECKING IF MODELS ARE DOWNLOADED")
 
 
