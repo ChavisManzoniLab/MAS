@@ -11,4 +11,5 @@ if not os.path.isdir(ROOT + 'Models'):
 	gdown.download(url, output, quiet=False)
 	with zipfile.ZipFile(output,"r") as zip_ref:
 		zip_ref.extractall(ROOT)
+	os.remove(ROOT + '\Models.zip') 
 

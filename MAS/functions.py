@@ -463,8 +463,8 @@ def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, sho
     nestBorderThreshold : 
     """
     
-    if useBackup :
-        with open('backup/nestDict.pkl', 'rb') as f:
+    if useBackup : 
+        with open( ROOT + 'models/nestDict.pkl', 'rb') as f:
             nestDict = pickle.load(f)    
     else:
         frameExtract(pathToVid=videopath, framePerVid = 20)
@@ -472,6 +472,8 @@ def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, sho
     if not useCSV :
         inferenceMice(videopath)
     pathToOutput = str(os.path.dirname(videopath) + '/results')
+    if not os.path.isdir(pathToOutput):
+        os.makedirs(pathToOutput)
     destfolder = str(os.path.dirname(videopath) + '/csv')
     outputResults(pathToCSV = destfolder, pathToVideo=videopath, pathToOutput = pathToOutput, polyDic = nestDict, nestBorderThreshold = nestBorderThreshold, DLCThreshold = DLCThreshold)
     if drawNest:
