@@ -464,7 +464,7 @@ def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, sho
     """
     
     if useBackup : 
-        with open( ROOT + 'models/nestDict.pkl', 'rb') as f:
+        with open( ROOT + '/models/nestDict.pkl', 'rb') as f:
             nestDict = pickle.load(f)    
     else:
         frameExtract(pathToVid=videopath, framePerVid = 20)
