@@ -1,7 +1,27 @@
 from MAS.config import  ROOT
 import os
+import tensorflow as tf
+import torch
+
+print("███████████████████████████████████████████████████████████")
+print("GPU CHECK")
+print("███████████████████████████████████████████████████████████")
+
+if  tf.test.is_built_with_cuda():
+	print("TENSORFLOW AND GPU WORKING")
+else :
+	("TENSORFLOW NOT WORKING WITH GPU")
+
+print("███████████████████████████████████████████████████████████")
+
+if torch.cuda.is_available():
+	print("TORCH IS WORKING WITH GPU")
+else: 
+	("TORCH NOT WORKING ON GPU")
 
 print("CHECKING IF MODELS ARE DOWNLOADED")
+
+
 
 if not os.path.isdir(ROOT + 'Models'):
 	import zipfile
