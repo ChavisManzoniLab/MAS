@@ -37,8 +37,6 @@ Beware, Cuda version will be dependent of your GPU
 
 # Use 
 
-## I wish to use provided data 
-
 To open the environnment, use 
 
 `cd MYENVIRONNEMENTPATH`\
@@ -51,13 +49,9 @@ Once you are in the environnment, you can launch the GUI by writing :
 The interface should open \
 No more geek stuff for you 🥳
 
-## I wish to use my data with the base models
-
-Use the provided script and link to your folder. 
-
 ## I wish to use my data and changes the models
 
-The analysis is using 2 differents inferences : 
+The pipeline is using 2 differents inferences : 
 
 One multianimal DeepLabCut model detecting the pup and the dam. \
 One Detectron2 model detecting the nest. 
