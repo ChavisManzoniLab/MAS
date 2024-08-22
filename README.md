@@ -18,19 +18,19 @@ To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an 
 I suggest installing python 3.9 https://www.python.org/downloads/release/python-3913/ (I didn't try with other version, feel free to try)\
 Create an environnement using venv command in python. 
 
-`mypythonpath -m venv /path/to/new/virtual/environment`
+1. `mypythonpath -m venv /path/to/new/virtual/environment`
 
 **Do not write mypythonpath, but link but your python 3.9.XX executable instead**
 
-`pip install git+https://github.com/StraussBenjamin/MAS.git`\
-`python -m pip install git+https://github.com/facebookresearch/detectron2.git` 
+2. `pip install git+https://github.com/StraussBenjamin/MAS.git`\
+3. `python -m pip install git+https://github.com/facebookresearch/detectron2.git` 
 
 A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. \
 Beware, Cuda version will be dependent of your GPU
 **/!\ MAY VARY DEPENDING ON YOUR GPU** \
-See https://pytorch.org/get-started/locally/
+4. See https://pytorch.org/get-started/locally/ 
 
-`pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118` \
+`pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118` 
 
 
 
