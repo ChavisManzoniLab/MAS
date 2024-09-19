@@ -46,7 +46,7 @@ def GUI():
             window.quit
         if not glob.glob(pathway + '/*.mp4'):
             quit()
-        PRTAnalysis(videopath = pathway , useBackup=useBackup, showNest = visual, useCSV = useCSV, 
+        PRTAnalysis(videopath = pathway , useBackup=useBackup, showNest = visual, useCSV = useCSV, drawDLCpred = drawPred,
                     nestBorderThreshold = newNestthreshold, DLCThreshold = newDLCThreshold , drawNest = drawNestPred) 
 
     window = tk.Tk()

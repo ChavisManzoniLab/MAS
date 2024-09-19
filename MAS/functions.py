@@ -328,22 +328,44 @@ def timestampRead(pathToVideo, csv):
 
 def outputResults(pathToCSV, pathToVideo, pathToOutput, polyDic, nestBorderThreshold, DLCThreshold):
     #Write result in a CSV file
-    dataf = pd.DataFrame(columns = ('video', 'success','success sec', 'firstEncounter', 'firstEncounter sec','timeFEtoRet', 'distanceToFirstEncounter', 'distanceFEtoRet'))
+    dataf = pd.DataFrame(columns = ('video', 'success frame','success sec', 'firstEncounter frame', 'firstEncounter sec','timeFEtoRet sec', 'distanceToFirstEncounter pixel', 'distanceFEtoRet pixel'))
+ 
     pathToCSV = str(pathToCSV+"\*.csv")
-    files = glob.glob(pathToCSV)
+    CSVList = glob.glob(pathToCSV)
+    CSVList_Short = []
+    for csvItem in CSVList:
+        vidName = csvItem.split('_')[0]
+        vidName = path.basename(vidName.replace('DLC', ''))
+        CSVList_Short.append(vidName)
 
-    for i, csv in enumerate(files):
+    vids =  glob.glob(str(pathToVideo + '/*.mp4'))
+    for i, file in enumerate(vids):
+        video = str(path.basename(path.normpath(file))).replace(".mp4","")
+        try:
+            dictIndex = polyDic["video"].index(video)
+        except ValueError: 
+            print(video)
+            print("NO MATCHING VIDEO FOUND IN THE NEST DICT")
+            continue
+        try:   
+            csvIndex = CSVList_Short.index(video)
+        except ValueError: 
+            print(CSVList_Short)
+            print(video)
+            print("NO MATCHING VIDEO FOUND FOR THE CSV")
+            continue
+
         damSize = None
         pixcoef = None
         try:
-            timestamps, vidName = timestampRead(pathToVideo, str(path.basename(path.normpath(csv))))
+            timestamps, vidName = timestampRead(pathToVideo, str(path.basename(path.normpath(CSVList[csvIndex]))))
             print("lentim",len(timestamps))
-            df = pd.read_csv(csv, skiprows = 3)         
+            df = pd.read_csv(CSVList[csvIndex], skiprows = 3)         
             meandf, damSize = mean_calculator(df, likelihood = DLCThreshold)
             remove_outliers(meandf)
             dataf.loc[i, 'video'] = vidName
             f = firstEncounter(meandf)
-            dataf.loc[i, 'firstEncounter'] = f
+            dataf.loc[i, 'firstEncounter frame'] = f
             dataf.loc[i, 'damSize'] = damSize
             try:
                 pixcoef = 8.5/damSize
@@ -353,45 +375,45 @@ def outputResults(pathToCSV, pathToVideo, pathToOutput, polyDic, nestBorderThres
             if f != None: #If First encounter, get the frames in seconds 
                 fsec = timestamps[f-1]
                 dataf.loc[i, 'firstEncounter sec'] = fsec
-                dataf.loc[i,'distanceToFirstEncounter'] = dam_distance(meandf, stop = f, nest = polyDic["polygon"][i])
+                dataf.loc[i,'distanceToFirstEncounter pixel'] = dam_distance(meandf, stop = f, nest = polyDic["polygon"][dictIndex])
                 if pixcoef :
-                    dataf.loc[i,'distanceToFirstEncounter cm'] = dam_distance(meandf, stop = f, nest = polyDic["polygon"][i])*pixcoef
+                    dataf.loc[i,'distanceToFirstEncounter cm'] = dam_distance(meandf, stop = f, nest = polyDic["polygon"][dictIndex])*pixcoef
             else : 
                 dataf.loc[i, 'firstEncounter sec'] = None
-                dataf.loc[i,'distanceToFirstEncounter'] = None
+                dataf.loc[i,'distanceToFirstEncounter pixel'] = None
                 dataf.loc[i,'distanceToFirstEncounter cm'] = None
-            s = success(meandf, polyDic["polygon"][i], nestBorderThreshold)
-            print(csv)
+            s = success(meandf, polyDic["polygon"][dictIndex], nestBorderThreshold)
+            print(CSVList[csvIndex])
             print(s)
             if s != None: #If success, get the frames in seconds 
                 print(s)
-                dataf.loc[i, 'success'] = s
+                dataf.loc[i, 'success frame'] = s
                 dataf.loc[i, 'success sec'] = timestamps[s]
-                dataf.loc[i, 'timeFEtoRet'] = timestamps[s] - fsec 
-                dataf.loc[i,'distanceFEtoRet'] = dam_distance(meandf, start = f, stop = s,nest = polyDic["polygon"][i])
+                dataf.loc[i, 'timeFEtoRet sec'] = timestamps[s] - fsec 
+                dataf.loc[i,'distanceFEtoRet pixel'] = dam_distance(meandf, start = f, stop = s,nest = polyDic["polygon"][dictIndex])
                 if pixcoef :
-                    dataf.loc[i,'distanceFEtoRet cm'] = dam_distance(meandf, start = f, stop = s,nest = polyDic["polygon"][i])*pixcoef
+                    dataf.loc[i,'distanceFEtoRet cm'] = dam_distance(meandf, start = f, stop = s,nest = polyDic["polygon"][dictIndex])*pixcoef
             else:
-                dataf.loc[i, 'success'] = -1
+                dataf.loc[i, 'success frame'] = -1
                 dataf.loc[i, 'success sec'] = None
-                dataf.loc[i,'distanceFEtoRet'] = None
+                dataf.loc[i,'distanceFEtoRet pixel'] = None
                 dataf.loc[i,'distanceFEtoRet cm'] = None
-            dataf.loc[i, 'distance'] = dam_distance(meandf, stop = s, nest = polyDic["polygon"][i])
+            dataf.loc[i, 'distance pixel'] = dam_distance(meandf, stop = s, nest = polyDic["polygon"][dictIndex])
             if pixcoef :
-                dataf.loc[i, 'distance cm'] = dam_distance(meandf, stop = s, nest = polyDic["polygon"][i])*pixcoef
+                dataf.loc[i, 'distance cm'] = dam_distance(meandf, stop = s, nest = polyDic["polygon"][dictIndex])*pixcoef
 
-            dataf.loc[i, 'Area of Nest'] = polyDic["area"][i]
+            dataf.loc[i, 'Area of Nest pixel'] = polyDic["area"][dictIndex]
         
         except: 
             dataf.loc[i, 'video'] = "NOT FOUND"
-            dataf.loc[i, 'success'] = None
+            dataf.loc[i, 'success frame'] = None
             dataf.loc[i, 'success sec'] = None
-            dataf.loc[i,'distanceFEtoRet'] = None
+            dataf.loc[i,'distanceFEtoRet pixel'] = None
             dataf.loc[i, 'firstEncounter sec'] = None
             dataf.loc[i,'distanceToFirstEncounter'] = None
-            dataf.loc[i, 'firstEncounter'] = None
-            dataf.loc[i, 'distance'] = None
-            dataf.loc[i, 'Area of Nest'] = None
+            dataf.loc[i, 'firstEncounter frame'] = None
+            dataf.loc[i, 'distance pixel'] = None
+            dataf.loc[i, 'Area of Nest pixel'] = None
     
     fileCreated = False
     increment = 0
@@ -444,7 +466,7 @@ def drawNestOnVid(videopath, nestPoly, outputPath= None):
     out.release()
     cv2.destroyAllWindows()
 
-def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, showNest = False, useCSV = False, drawNest = False, nestBorderThreshold = 10 , DLCThreshold = 0.7):
+def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, showNest = False, useCSV = False, drawDLCpred = False,  drawNest = False, nestBorderThreshold = 10 , DLCThreshold = 0.7):
     """
     The main function
     Launch the detection of the nest via detectron2
@@ -462,7 +484,7 @@ def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, sho
     drawNest => Boolean : Create a video with the estimated polygon nest drawn on the video. Outputted in video_With_Nest folder
     nestBorderThreshold : 
     """
-    
+    files =  glob.glob(str(videopath + '/*.mp4'))
     if useBackup : 
         with open( ROOT + '/models/nestDict.pkl', 'rb') as f:
             nestDict = pickle.load(f)    
@@ -476,8 +498,7 @@ def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, sho
         os.makedirs(pathToOutput)
     destfolder = str(os.path.dirname(videopath) + '/csv')
     outputResults(pathToCSV = destfolder, pathToVideo=videopath, pathToOutput = pathToOutput, polyDic = nestDict, nestBorderThreshold = nestBorderThreshold, DLCThreshold = DLCThreshold)
-    if drawNest:
-        files =  glob.glob(str(videopath + '/*.mp4'))
+    if drawNest :
         for file in files:
             video = str(path.basename(path.normpath(file))).replace(".mp4","")
             try:
@@ -499,3 +520,5 @@ def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, sho
             print(vid)
             if "NestDraw" in vid:
                 shutil.move(os.path.join(videopath, vid), os.path.join(vidNest, vid))
+    if drawDLCpred:
+        showPred(videopath, pcutoff = DLCThreshold)

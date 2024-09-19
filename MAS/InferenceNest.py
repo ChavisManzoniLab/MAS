@@ -168,11 +168,12 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
         if visual == True:
             test = plt.imread(image)
             plt.imshow(test)
-            plt.plot(*polygon.exterior.xy, color = "green")
             plt.plot(*polygon2.exterior.xy, color = "red")
+            plt.plot(*polygon.exterior.xy, color = "green")
+
             #plt.plot(*polygon3.exterior.xy, color = "blue")
             plt.text(30,-30, s = str("Green estimation is an average of " + str(len(mask)) + " detections"),  fontsize =12)
-            #plt.text(30,-10, s = str("Blue estimation is an simplification of  green"),  fontsize =12)
+            plt.text(30,-10, s = str("Red estimation is last detection"),  fontsize =12)
             plt.show()
 
         results["id"].append(i)
