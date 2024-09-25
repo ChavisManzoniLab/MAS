@@ -107,9 +107,9 @@ def remove_outliers(df):
             
 def isGone(XcoordList,YcoordList, start):
     """
-    Check if the pup does appear again. 
+    Check if one does appear again. 
     If not return True and the start frame
-    If the pup reappear, return False and the frame of reappearence
+    If reappearence, return False and the frame of reappearence
     """
     X = 0
     Y = 0
@@ -167,28 +167,8 @@ def dam_distance(df, nest, start = 0, stop = 0):
                 distance += temp
     return distance
 
-def inNestRelative(df, m):
-    #OBS
-    #determines if the pup has crossed the x coord from the first appearenancene of the dam.
-    #ie if the x coordinates of the pup are lower for 3 frames than the first x coordinate of the dam.
-    e = pd.to_numeric(df['pupx'])
-
-    f = list(pd.to_numeric(df['damx']))
-
-    fi = [x for i, x in enumerate(f) if x > 0]
-    if fi != []:
-        firstApp_dam = fi[0]
-    else :
-        firstApp_dam = -2
-
-    for i in range(m ,len(e)-3):
-        i = i+1
-        if e[i] <= firstApp_dam and e[i] != -1 :
-            if e[i+1] <= firstApp_dam and e[i+1] != -1 and e[i+2] <= firstApp_dam and e[i+2] != -1:
-                return i 
-    return None
-
 def isNestPoly(polygon, x, y):
+    #Test in the point (x,y) is in the polygon 
     animal = Point(x, y)
     if polygon != 0:
         isNest = polygon.contains(animal)
@@ -237,51 +217,45 @@ def success(df, poly, nestBorderThreshold = 10):
         if i == 0:
             return None 
         if df.loc[i,'pupx'] !=-1: #if the minimum is different from -1, the pup never disappears from the video.
-            for i in range(0, len(df)):
+            for i in range(0, len(df)): #Loop though everything
                 try:
-                    if i in inNestList and distToNestBorder(poly, pupX[i], pupY[i]) > nestBorderThreshold:
-                        print("PUP NEVER DISSARPEAR")
-                        return i
+                    if i in inNestList and distToNestBorder(poly, pupX[i], pupY[i]) > nestBorderThreshold: 
+                        return i # If The pup is in the nest return success
                 except: break
                 
             return None
         pupgone , iter = isGone(pupX, pupY, i) #Return the next appearence as iter
         print(pupgone)
-        if damAbove(df, i-1): 
-            if i == iter:
-                iter = len(df)
+        if damAbove(df, i-1): #If the dam is above the pup when he disappears
+            if i == iter: #If pupgone return the current frame
+                iter = len(df) # iter goes to the end of the dataframe
             for frame in range(i, iter):
-                print("for frame")
                 try:
                     if (distToNestBorder(poly, damX[frame], damY[frame]) != None and distToNestBorder(poly, damX[frame], damY[frame] ) <= nestBorderThreshold) or isNestPoly(poly, damX[frame], damY[frame]):
-                        if pupgone == True:
-                            print("innest")
+                        if pupgone == True: #If the pup is never seen again and the Dam enter the nest
                             return frame
+                        
                         if isNestPoly(poly, pupX[frame], pupY[frame]) and distToNestBorder(poly, pupX[frame], pupY[frame]) > nestBorderThreshold:
-                            print("là")
-                            return frame
+                            return frame #If the pup is IN the nest and not close to the border
+                        
                     if dam_isLost(df, frame):
-                         #CHECK IF PUP REAPEAR AND WHERE
+                         #Check if pup reappears AND WHERE
                         for test in range(frame,len(df)):
                             if pupX[test] > 0 and pupY[test] > 0 and not isNestPoly(poly, pupX[frame], pupY[frame]):
                                 continue 
-                        print('là')
                         return frame
-                except: break #FAIRE QUELQUE CHOSE POUR CHECKER SI MAMAN ELLE DISPARAIT AVANT QUE LE PUP REPARRAIT
+                except: break
         for r in range(i, iter-5):
 
             if pupgone:
-                if dam_isLost(df,r) or isNestPoly(poly, damX[r], damY[r]):
-                    print("ehee")                                        
+                if dam_isLost(df,r) or isNestPoly(poly, damX[r], damY[r]):                                    
                     return r
         #the loop stops at the frame where the pup disappears until the end of the video.               
     if  damAbove(df, i-1) : 
-        print("mhmh")
         #if the dam is near the pup when it disappears, the frame of the success of PRT is when the dam goes into the nest.
         stuck = 0
         while i<len(df) and not isGone(damX, damY, i)[0] and not stuck == 15 :
             i = damX[isGone(damX, damY, i)[1]:].idxmin()
-            print("loop")
             if i < len(df)-5 and dam_isLost(df, i) or isNestPoly(poly, damX[i], damY[i]):
                 return i 
             stuck = stuck + 1
@@ -330,6 +304,7 @@ def outputResults(pathToCSV, pathToVideo, pathToOutput, polyDic, nestBorderThres
     #Write result in a CSV file
     dataf = pd.DataFrame(columns = ('video', 'success frame','success sec', 'firstEncounter frame', 'firstEncounter sec','timeFEtoRet sec', 'distanceToFirstEncounter pixel', 'distanceFEtoRet pixel'))
  
+    #Prepare the list to match CSV and video
     pathToCSV = str(pathToCSV+"\*.csv")
     CSVList = glob.glob(pathToCSV)
     CSVList_Short = []
@@ -341,12 +316,14 @@ def outputResults(pathToCSV, pathToVideo, pathToOutput, polyDic, nestBorderThres
     vids =  glob.glob(str(pathToVideo + '/*.mp4'))
     for i, file in enumerate(vids):
         video = str(path.basename(path.normpath(file))).replace(".mp4","")
+        #Match the video and the nest polygon
         try:
             dictIndex = polyDic["video"].index(video)
         except ValueError: 
             print(video)
             print("NO MATCHING VIDEO FOUND IN THE NEST DICT")
             continue
+        #Match the video and the CSV file
         try:   
             csvIndex = CSVList_Short.index(video)
         except ValueError: 
@@ -367,6 +344,8 @@ def outputResults(pathToCSV, pathToVideo, pathToOutput, polyDic, nestBorderThres
             f = firstEncounter(meandf)
             dataf.loc[i, 'firstEncounter frame'] = f
             dataf.loc[i, 'damSize'] = damSize
+
+            #Try to extrapolate the pixel to cm size via the size of the Dam
             try:
                 pixcoef = 8.5/damSize
             except:
@@ -482,7 +461,7 @@ def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, sho
     showNest : display the nest polygon on matplotlib
     useCSV => Boolean : Use the .CSV outputted from maDLC.  
     drawNest => Boolean : Create a video with the estimated polygon nest drawn on the video. Outputted in video_With_Nest folder
-    nestBorderThreshold : 
+    nestBorderThreshold : Threshold in pixel to consider a point inside the nest, and not in border of it
     """
     files =  glob.glob(str(videopath + '/*.mp4'))
     if useBackup : 
@@ -499,6 +478,7 @@ def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, sho
     destfolder = str(os.path.dirname(videopath) + '/csv')
     outputResults(pathToCSV = destfolder, pathToVideo=videopath, pathToOutput = pathToOutput, polyDic = nestDict, nestBorderThreshold = nestBorderThreshold, DLCThreshold = DLCThreshold)
     if drawNest :
+        print('Drawing the nest detection on each video')
         for file in files:
             video = str(path.basename(path.normpath(file))).replace(".mp4","")
             try:
@@ -521,4 +501,5 @@ def PRTAnalysis(videopath , detectorPath = NESTDETECTOR,  useBackup = False, sho
             if "NestDraw" in vid:
                 shutil.move(os.path.join(videopath, vid), os.path.join(vidNest, vid))
     if drawDLCpred:
+        print('Drawing the DLC detection on each video')
         showPred(videopath, pcutoff = DLCThreshold)

@@ -107,8 +107,9 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
     dict["id"]
     dict["video"] containing the image path
     dict["confidence"] the confidence score of the detection
-    dict["polygon"] the polygon of the nest after simplification
-    dict["area"] the area of the polygon before simplification
+    dict["polygon"] the polygon of the nest
+    dict["area"] the area of the polygon
+    dict["rawpolygon"] the result of the last inference
     """
     cfg=get_cfg()
     cfg.merge_from_file(os.path.join(detectorPath,'config.yaml'))
@@ -120,7 +121,13 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
     result = []
     results = {"id" : [], "video" : [], "videopath" : [] , "confidence" : [], "polygon" : [], "area" : [], 'rawpolygon' : []}
     i = 0
+    if visual:
+        temp = os.path.dirname(image_dir)
+        visualpath = str(temp + '/NestImage')
+        if not path.isdir(visualpath) :
+            os.mkdir(visualpath)
     for folder in glob.glob(str(image_dir +"\*")):
+        vidname = str(path.basename(path.normpath(folder))).replace(".mp4","")
         mask = []
         teste =  0
         for image in glob.glob(str(folder + "\*.jpg")):
@@ -174,10 +181,11 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
             #plt.plot(*polygon3.exterior.xy, color = "blue")
             plt.text(30,-30, s = str("Green estimation is an average of " + str(len(mask)) + " detections"),  fontsize =12)
             plt.text(30,-10, s = str("Red estimation is last detection"),  fontsize =12)
-            plt.show()
+
+            plt.savefig(visualpath + vidname + '.tiff')
 
         results["id"].append(i)
-        results["video"].append(str(path.basename(path.normpath(folder))).replace(".mp4",""))
+        results["video"].append(vidname)
         results["videopath"].append(str(folder))
         try:
             results["confidence"].append(result['instances'].scores.cpu().numpy()[0])
