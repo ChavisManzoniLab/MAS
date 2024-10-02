@@ -15,12 +15,21 @@ To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an 
 
 # Suggested Installation
 
-I suggest installing python 3.9 https://www.python.org/downloads/release/python-3913/ (I didn't try with other version, feel free to try)\
-Create an environnement using venv command in python. 
+Install Git : https://git-scm.com/downloads
+Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (INSTALL x64)\
+When installing Python, check the "Add Python to PATH" 
+PICTURE
+OF 
+WHAT I SAY 
+╝12╝12y21Ö21§265○5
 
+
+Open the terminal \
+
+In the terminal => Create an environnement using venv command in python. 
 1. `mypythonpath -m venv /path/to/new/virtual/environment`
-
 **Do not write mypythonpath, but link but your python 3.9.XX executable instead**
+**If you choose the base parameter on windows
 
 2. `pip install git+https://github.com/ChavisManzoniLab/MAS.git`
 3. `python -m pip install git+https://github.com/facebookresearch/detectron2.git` 
