@@ -15,7 +15,7 @@ To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an 
 
 # Suggested Installation
 
-Install Git : https://git-scm.com/downloads
+Install Git : https://git-scm.com/downloads \
 Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (INSTALL x64)\
 When installing Python, check the "Add Python to PATH" 
 PICTURE \
