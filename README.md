@@ -18,31 +18,36 @@ To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an 
 Install Git : https://git-scm.com/downloads
 Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (INSTALL x64)\
 When installing Python, check the "Add Python to PATH" 
-PICTURE
-OF 
-WHAT I SAY 
-╝12╝12y21Ö21§265○5
+PICTURE \
+OF \
+WHAT I SAY \
+╝12╝12y21Ö21§265○5 \
 
 
 Open the terminal \
 
-In the terminal => Create an environnement using venv command in python. 
-1. `mypythonpath -m venv /path/to/new/virtual/environment`
-**Do not write mypythonpath, but link but your python 3.9.XX executable instead**
-**If you choose the base parameter on windows
+In the terminal => 
 
-2. `pip install git+https://github.com/ChavisManzoniLab/MAS.git`
-3. `python -m pip install git+https://github.com/facebookresearch/detectron2.git` 
+1. Create an environnement using venv command in python. 
+ `mypythonpath -m venv MYENVIRONNEMENTPATH`
+**Do not write mypythonpath, but link but your python 3.9.XX executable instead**
+**By default, mypythonpath should be here : C:\Users\Your user name\AppData\Local\Programs\Python\Python39\python**
+
+3. Activate the environnement you just created :
+`cd MYENVIRONNEMENTPATH`\
+`scripts\activate`
+ 
+4. Install the packages 
+`pip install git+https://github.com/ChavisManzoniLab/MAS.git`
+5. And
+`python -m pip install git+https://github.com/facebookresearch/detectron2.git` 
 
 A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. \
 Beware, Cuda version will be dependent of your GPU
 **/!\ MAY VARY DEPENDING ON YOUR GPU** \
-4. See https://pytorch.org/get-started/locally/ 
+5. See https://pytorch.org/get-started/locally/ 
 
 `pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118` 
-
-
-
 
 # Use 
 
