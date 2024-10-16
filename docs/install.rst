@@ -41,7 +41,7 @@ By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/
 
 A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. \
 Beware, Cuda version will be dependent of your GPU
-**/!\ MAY VARY DEPENDING ON YOUR GPU** \
+**/!\ MAY VARY DEPENDING ON YOUR GPU**
 5. See https://pytorch.org/get-started/locally/ 
 
 .. code-block:: console
