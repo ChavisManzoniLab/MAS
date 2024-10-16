@@ -18,7 +18,7 @@ In the terminal =>
 
 **Do not write mypythonpath, but link but your python 3.9.XX executable instead**
 
-**By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/Programs/Python/Python39/python
+By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/Programs/Python/Python39/python
 
 3. Activate the environnement you just created :
 
