@@ -1,4 +1,3 @@
-
 # Read the Docs configuration file for MkDocs projects
 
 # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
@@ -13,7 +12,7 @@ version: 2
 
 build:
 
-  os: windows.10
+  os: ubuntu-22.04
 
   tools:
 
@@ -23,3 +22,12 @@ build:
 mkdocs:
 
   configuration: mkdocs.yml
+
+
+# Optionally declare the Python requirements required to build your docs
+
+python:
+
+  install:
+
+  - requirements: docs/requirements.txt
