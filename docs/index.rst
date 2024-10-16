@@ -21,7 +21,7 @@ Summary
 .. toctree::
 
   install
-  use
+  usage
 
 
 # Use 
