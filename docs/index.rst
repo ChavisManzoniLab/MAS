@@ -1,6 +1,8 @@
-# MAS-PRT
+MAS-PRT
+===================================
+**Machine-automated scoring of Pup retrieval test**
+------------------------------------
 
-Machine-automated scoring of Pup retrieval test
 
 Mas is a pipeline allowing for an automatic scoring of pup retrieval test. It computes automatically multiple variables, including 
 
@@ -13,7 +15,8 @@ More information in *DOI*
 
 To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an automated detection of the Nest using Detectron2
 
-# Suggested Installation
+Installation
+------------------
 
 Install Git : https://git-scm.com/downloads \
 Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (INSTALL x64)\
