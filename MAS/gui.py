@@ -46,8 +46,8 @@ def GUI():
             window.quit
         if not glob.glob(pathway + '/*.mp4'):
             quit()
-        PRTAnalysis(videopath = pathway , useBackup=useBackup, showNest = visual, useCSV = useCSV, drawDLCpred = drawPred,
-                    nestBorderThreshold = newNestthreshold, DLCThreshold = newDLCThreshold , drawNest = drawNestPred) 
+        PRTAnalysis(video_path = pathway , use_backup=useBackup, show_nest = visual, use_CSV = useCSV, draw_DLC_pred = drawPred,
+                    nest_border_threshold = newNestthreshold, DLC_threshold = newDLCThreshold , draw_nest = drawNestPred) 
 
     window = tk.Tk()
     window.title('WELCOME TO MAS')

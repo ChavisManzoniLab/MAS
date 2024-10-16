@@ -27,7 +27,7 @@ from MAS.config import ROOT
 min_area_threshold = 250
 
 
-def frameExtract(pathToVid, framePerVid = 1):
+def frame_extract(video_path, frame_per_vid = 1):
     """Extract random frames for each video in pathToVid
     The frames selected are not completely random.
     Instead, the video is divided by how many frame needs to be extracted
@@ -41,34 +41,34 @@ def frameExtract(pathToVid, framePerVid = 1):
         frameperVid : The number of frame to extract per video. 
        
        """
-    pathToVideo = str(pathToVid+"\*.mp4")
+    path_to_video = str(video_path+"\*.mp4")
      #Clear target output directory if needed
-    output = glob.glob(str(pathToVid + "/frames/")) 
+    output = glob.glob(str(video_path + "/frames/")) 
     try:
         for f in output:
                 os.chmod(f, stat.S_IWRITE)
                 shutil.rmtree(f)
     except:
         pass
-    os.makedirs(str(pathToVid + "/frames/"), exist_ok = True)
+    os.makedirs(str(video_path + "/frames/"), exist_ok = True)
     #Create a sub-directory for each video, containing extracted frames
-    for video in glob.glob(pathToVideo):
+    for video in glob.glob(path_to_video):
         cap = cv2.VideoCapture(video)
-        FileName = str(pathToVid + "/frames/" + str(path.basename(path.normpath(video)))).replace(".mp4","")
+        FileName = str(video_path + "/frames/" + str(path.basename(path.normpath(video)))).replace(".mp4","")
         totalframecount= int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         try:
             mkdir(FileName)
         except: 
             pass
-        segment = (totalframecount-100) / framePerVid 
-        for i in range(0,framePerVid) :
+        segment = (totalframecount-100) / frame_per_vid 
+        for i in range(0,frame_per_vid) :
             frame_id = random.randint(round(segment*i), round(segment*(i+1))) #  /!\  :)
             cap.set(cv2.CAP_PROP_POS_FRAMES, frame_id)
             ret, frame = cap.read()
             cv2.imwrite(FileName + "/Frame_" + str(i + 1) +".jpg", frame)
         cap.release()
 
-def polygonFromMask(maskedArr):
+def polygon_from_mask(maskedArr):
   # stolen from https://github.com/hazirbas/coco-json-converter/blob/master/generate_coco_json.py
   """
   Change the binary mask to polygon COCO format
@@ -84,7 +84,7 @@ def polygonFromMask(maskedArr):
      raise ValueError
   return segmentation
 
-def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5):
+def predict_nest(detector_path, image_dir, visual = False, nest_simplification = 5):
 
     """
 
@@ -112,8 +112,8 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
     dict["rawpolygon"] the result of the last inference
     """
     cfg=get_cfg()
-    cfg.merge_from_file(os.path.join(detectorPath,'config.yaml'))
-    cfg.MODEL.WEIGHTS=os.path.join(detectorPath,'model_final.pth')
+    cfg.merge_from_file(os.path.join(detector_path,'config.yaml'))
+    cfg.MODEL.WEIGHTS=os.path.join(detector_path,'model_final.pth')
     cfg.MODEL.DEVICE='cuda' if torch.cuda.is_available() else 'cpu'
     #cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5
     predictor=DefaultPredictor(cfg)                         
@@ -123,9 +123,9 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
     i = 0
     if visual:
         temp = os.path.dirname(image_dir)
-        visualpath = str(temp + '/NestImage')
-        if not path.isdir(visualpath) :
-            os.mkdir(visualpath)
+        visual_path = str(temp + '/NestImage')
+        if not path.isdir(visual_path) :
+            os.mkdir(visual_path)
     for folder in glob.glob(str(image_dir +"\*")):
         vidname = str(path.basename(path.normpath(folder))).replace(".mp4","")
         mask = []
@@ -156,7 +156,7 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
             continue
         poly2 = []
         poly3 = []
-        poly = polygonFromMask(maskAv) #Creation of average polygon
+        poly = polygon_from_mask(maskAv) #Creation of average polygon
         xcoord = poly[0][0::2]
         ycoord = poly[0][1::2]
         for j in range(0,len(xcoord)):
@@ -164,14 +164,14 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
         polygon = Polygon(poly2)
 
         poly2 = []
-        poly = polygonFromMask(mask[len(mask)-1]) #Last polygon for comparison
+        poly = polygon_from_mask(mask[len(mask)-1]) #Last polygon for comparison
         xcoord = poly[0][0::2]
         ycoord = poly[0][1::2]
         for j in range(0,len(xcoord)):
             poly3.append([xcoord[j], ycoord[j]])
         polygon2 = Polygon(poly3)
 
-        polygon3 = (polygon.simplify(NestSimplification))
+        polygon3 = (polygon.simplify(nest_simplification))
         if visual == True:
             test = plt.imread(image)
             plt.imshow(test)
@@ -182,7 +182,7 @@ def predictNest(detectorPath, image_dir, visual = False, NestSimplification = 5)
             plt.text(30,-30, s = str("Green estimation is an average of " + str(len(mask)) + " detections"),  fontsize =12)
             plt.text(30,-10, s = str("Red estimation is last detection"),  fontsize =12)
 
-            plt.savefig(visualpath + vidname + '.tiff')
+            plt.savefig(visual_path + vidname + '.tiff')
 
         results["id"].append(i)
         results["video"].append(vidname)

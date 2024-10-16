@@ -23,8 +23,8 @@ detectorPath = r"C:\Users\bs\LabGym\Lib\site-packages\LabGym\detectors\Nest10"
 dicolist = []
 
 for i in incr:
-    frameExtract(pathToVid=pathToVid, framePerVid = i)
-    Nestdict = predictNest(detectorPath, str(pathToVid + "/frames"), visual = False )
+    frame_extract(video_path=pathToVid, frame_per_vid = i)
+    Nestdict = predict_nest(detectorPath, str(pathToVid + "/frames"), visual = False )
     dicolist.append(Nestdict)
 
 resultdic = {'video' : [], 'areadiff' : []}

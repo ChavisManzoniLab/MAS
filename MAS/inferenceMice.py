@@ -6,22 +6,22 @@ import glob
 from MAS.config import *
 
 
-def inferenceMice(videopath):
-    destfolder = str(os.path.dirname(videopath) + '\csv')
-    deeplabcut.analyze_videos(config = CONFIG, videos = videopath, videotype = '.mp4' , shuffle = 1, save_as_csv=True, destfolder = destfolder)
+def inference_mice(video_path):
+    destfolder = str(os.path.dirname(video_path) + '\csv')
+    deeplabcut.analyze_videos(config = CONFIG, videos = video_path, videotype = '.mp4' , shuffle = 1, save_as_csv=True, destfolder = destfolder)
 
-def showPred(videopath, pcutoff):
-    CSVfolder = str(os.path.dirname(videopath) + '\csv')
+def show_pred(video_path, pcutoff):
+    CSVfolder = str(os.path.dirname(video_path) + '\csv')
     files = os.listdir(CSVfolder)
     for file in files:
-        shutil.copy(os.path.join(CSVfolder, file), os.path.join(videopath, file))
-    deeplabcut.create_labeled_video(config=CONFIG, videos=videopath , color_by='individual', shuffle = 1, pcutoff = pcutoff)
+        shutil.copy(os.path.join(CSVfolder, file), os.path.join(video_path, file))
+    deeplabcut.create_labeled_video(config=CONFIG, videos=video_path , color_by='individual', shuffle = 1, pcutoff = pcutoff)
     for file in files:
-        os.remove(os.path.join(videopath, file))
-    vidList = os.listdir(videopath)
-    DLCTracking = str(os.path.dirname(videopath) + '/DLCTracking')
-    if not path.isdir(DLCTracking) :
-        os.mkdir(DLCTracking)
+        os.remove(os.path.join(video_path, file))
+    vidList = os.listdir(video_path)
+    DLC_tracking = str(os.path.dirname(video_path) + '/DLCTracking')
+    if not path.isdir(DLC_tracking) :
+        os.mkdir(DLC_tracking)
     for vid in vidList:
         if "shuffle" in vid:
-            shutil.move(os.path.join(videopath, vid), os.path.join(DLCTracking, vid))
+            shutil.move(os.path.join(video_path, vid), os.path.join(DLC_tracking, vid))
