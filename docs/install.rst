@@ -43,7 +43,7 @@ A GPU is highly recommanded to speed up the analysis. To make use of the analysi
 Beware, Cuda version will be dependent of your GPU
 ** MAY VARY DEPENDING ON YOUR GPU **
 
-5. See https://pytorch.org/get-started/locally/ 
+6. See https://pytorch.org/get-started/locally/ 
 
 .. code-block:: console
 
