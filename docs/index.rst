@@ -18,10 +18,9 @@ To work, Mas utilize a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut
 Summary
 ------------------
 
-
 .. toctree::
 
-    install
+  install
 
 
 Install Git : https://git-scm.com/downloads \
