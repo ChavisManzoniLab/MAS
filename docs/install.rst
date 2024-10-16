@@ -14,7 +14,7 @@ In the terminal =>
 
 .. code-block:: console
 
- mypythonpath -m venv MYENVIRONNEMENTPATH
+ mypythonpath -m venv MAS
 
 **Do not write mypythonpath, but link but your python 3.9.XX executable instead**
 
