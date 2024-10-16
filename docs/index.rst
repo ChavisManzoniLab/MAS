@@ -20,7 +20,12 @@ Summary
 
 .. toctree::
 
- install
+    install
+
+.. code-block:: console
+
+    pip install lifelines
+
 
 
 Install Git : https://git-scm.com/downloads \
