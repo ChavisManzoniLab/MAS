@@ -11,14 +11,19 @@ Open the terminal \
 In the terminal => 
 
 1. Create an environnement using venv command in python. 
+
 .. code-block:: console
+
  mypythonpath -m venv MYENVIRONNEMENTPATH
 
 **Do not write mypythonpath, but link but your python 3.9.XX executable instead**
-**By default, mypythonpath should be here : C:\Users\Your user name\AppData\Local\Programs\Python\Python39\python**
+
+**By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/Programs/Python/Python39/python
 
 3. Activate the environnement you just created :
+
 .. code-block:: console
+
  cd MYENVIRONNEMENTPATH
  scripts\activate
  
