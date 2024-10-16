@@ -28,13 +28,22 @@ By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/
  scripts\activate
  
 4. Install the packages 
-`pip install git+https://github.com/ChavisManzoniLab/MAS.git`
+
+.. code-block:: console
+
+ pip install git+https://github.com/ChavisManzoniLab/MAS.git`
+
 5. And
-`python -m pip install git+https://github.com/facebookresearch/detectron2.git` 
+
+.. code-block:: console
+
+ python -m pip install git+https://github.com/facebookresearch/detectron2.git` 
 
 A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. \
 Beware, Cuda version will be dependent of your GPU
 **/!\ MAY VARY DEPENDING ON YOUR GPU** \
 5. See https://pytorch.org/get-started/locally/ 
 
-`pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118` 
+.. code-block:: console
+
+ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 
