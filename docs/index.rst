@@ -1,17 +1,11 @@
-.. MAS documentation master file, created by
-   sphinx-quickstart on Wed Oct 16 12:04:46 2024.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Welcome to Lumache's documentation!
+===================================
 
-MAS documentation
-=================
+**Lumache** (/lu'make/) is a Python library for cooks and food lovers that
+creates recipes mixing random ingredients.  It pulls data from the `Open Food
+Facts database <https://world.openfoodfacts.org/>`_ and offers a *simple* and
+*intuitive* API.
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+.. note::
 
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
+   This project is under active development.
