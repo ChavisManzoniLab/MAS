@@ -11,13 +11,16 @@ Open the terminal \
 In the terminal => 
 
 1. Create an environnement using venv command in python. 
- `mypythonpath -m venv MYENVIRONNEMENTPATH`
+.. code-block:: console
+ mypythonpath -m venv MYENVIRONNEMENTPATH
+
 **Do not write mypythonpath, but link but your python 3.9.XX executable instead**
 **By default, mypythonpath should be here : C:\Users\Your user name\AppData\Local\Programs\Python\Python39\python**
 
 3. Activate the environnement you just created :
-`cd MYENVIRONNEMENTPATH`\
-`scripts\activate`
+.. code-block:: console
+ cd MYENVIRONNEMENTPATH
+ scripts\activate
  
 4. Install the packages 
 `pip install git+https://github.com/ChavisManzoniLab/MAS.git`
