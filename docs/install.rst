@@ -24,7 +24,7 @@ By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/
 
 .. code-block:: console
 
- cd MYENVIRONNEMENTPATH
+ cd MAS
  scripts\activate
  
 4. Install the packages 
