@@ -15,8 +15,13 @@ More information in *DOI*
 
 To work, Mas utilize a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut>`_ detection of both the pup and the dam, and an automated detection of the Nest using `Detectron2 <https://github.com/facebookresearch/detectron2?tab=readme-ov-file#learn-more-about-detectron2>`_
 
-Installation
+Summary
 ------------------
+
+.. toctree::
+
+ install
+
 
 Install Git : https://git-scm.com/downloads \
 Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (INSTALL x64)\
