@@ -18,14 +18,10 @@ To work, Mas utilize a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut
 Summary
 ------------------
 
+
 .. toctree::
 
     install
-
-.. code-block:: console
-
-    pip install lifelines
-
 
 
 Install Git : https://git-scm.com/downloads \
