@@ -10,7 +10,7 @@ project = 'MAS'
 copyright = '2024, Strauss Benjamin'
 author = 'Strauss Benjamin'
 release = '0.1'
-
+html_theme = "bizstyle"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
