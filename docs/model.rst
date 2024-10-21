@@ -30,19 +30,19 @@ Now, you can extract some frames, and try to start label frame.
 IF your manipulation was good, the keypoint selection in Napari (down right) should look like the picture  
   .. image::https://i.imgur.com/YpshHaL.jpeg
 
-|This is how I label my frames.
-|Dam is the dam
-|single is the pup
-|The point names are self-explanatory, see image below. 
+| This is how I label my frames.
+| Dam is the dam
+| single is the pup
+| The point names are self-explanatory, see image below. 
   .. image::https://i.imgur.com/Gy43Vtb.png
   .. image::https://i.imgur.com/IldAwqe.png
   .. image::https://i.imgur.com/Ct0Gdy1.png
 
 (Don't be afraid if you have differents colors than me, It changes)
 
-|Now, it's up to you! Happy training !
-|See how to train a maDLC model : https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html
-|Once the model is satisfying, the new DLC model must be referenced in the code. 
+| Now, it's up to you! Happy training !
+| See how to train a maDLC model : https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html
+| Once the model is satisfying, the new DLC model must be referenced in the code. 
 
 
 
