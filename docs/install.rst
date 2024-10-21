@@ -7,8 +7,8 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
 
 When installing Python, check the "Add Python to PATH" 
 
-|Open the terminal 
-|In the terminal => 
+| Open the terminal 
+| In the terminal => 
 
 1. Create an environnement using venv command in python. 
 
@@ -41,8 +41,8 @@ By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/
 
 5. Install CUDA
 
-|A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
-|Beware, Cuda version will be dependent of your GPU
+| A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
+| Beware, Cuda version will be dependent of your GPU
 
 ** MAY VARY DEPENDING ON YOUR GPU **
 
