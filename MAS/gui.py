@@ -31,23 +31,23 @@ def GUI():
             nicetext = ' video found'
         pathway['text'] = path + "\n" + '——————'+ "\n" + str(len(vidlist)) + nicetext
 
-    def launchAnalyze(pathway):
+    def launch_analyze(pathway):
         print(pathway) 
-        useBackup = storedNest.get()
-        useCSV = storedCSV.get()
+        use_backup = storedNest.get()
+        use_CSV = storedCSV.get()
         visual = showNestPred.get()
-        drawPred = drawDLConVid.get()
-        drawNestPred = drawNest.get()
+        draw_pred = drawDLConVid.get()
+        draw_nest_pred = drawNest.get()
         try:
-            newNestthreshold = float(Nestthreshold.get())
-            newDLCThreshold = float(threshold.get())
+            new_nest_threshold = float(Nestthreshold.get())
+            new_DLC_threshold = float(threshold.get())
         except:
             print("WRONG ENTRY")
             window.quit
         if not glob.glob(pathway + '/*.mp4'):
             quit()
-        PRTAnalysis(video_path = pathway , use_backup=useBackup, show_nest = visual, use_CSV = useCSV, draw_DLC_pred = drawPred,
-                    nest_border_threshold = newNestthreshold, DLC_threshold = newDLCThreshold , draw_nest = drawNestPred) 
+        PRTAnalysis(video_path = pathway , use_backup=use_backup, show_nest = visual, use_CSV = use_CSV, draw_DLC_pred = draw_pred,
+                    nest_border_threshold = new_nest_threshold, DLC_threshold = new_DLC_threshold , draw_nest = draw_nest_pred) 
 
     window = tk.Tk()
     window.title('WELCOME TO MAS')
@@ -108,7 +108,7 @@ def GUI():
     tk.ttk.Separator(master = window, orient = HORIZONTAL).grid(column = 0, row = 30 , columnspan=100, sticky="ew" )
 
     buttonAnalyze = tk.Button( master = window, text="RUN", width=20,
-        height=3, bg="limegreen", fg="black", command = lambda: launchAnalyze(path) )
+        height=3, bg="limegreen", fg="black", command = lambda: launch_analyze(path) )
     buttonAnalyze.grid(row = 31, column = 0, padx = 1, pady = 1)
 
     Button(master = window, text='Quit', command=window.quit).grid(row=32, column = 1, pady=4)
