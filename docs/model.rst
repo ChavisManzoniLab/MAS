@@ -17,36 +17,32 @@ First, Create a new maDeepLabCut project
   
   .. image::https://i.imgur.com/ZFAeJ70.jpeg
 
-  Open the config.yaml with any text editor. It should look like this
+Open the config.yaml with any text editor. It should look like this
 
  .. image::https://i.imgur.com/2hDlBf2.jpeg
 
-  | Now, delete everything below the red line.
-  | Copy and paste the layout.yaml located in main/DLC/Layout into your config.yaml\
-  | Do not erase the part before the red line
+| Now, delete everything below the red line.
+| Copy and paste the layout.yaml located in main/DLC/Layout into your config.yaml\
+| Do not erase the part before the red line
 
-  Now, you can extract some frames, and try to start label frame.
+Now, you can extract some frames, and try to start label frame.
 
-  IF your manipulation was good, the keypoint selection in Napari (down right) should look like the picture  
+IF your manipulation was good, the keypoint selection in Napari (down right) should look like the picture  
   .. image::https://i.imgur.com/YpshHaL.jpeg
 
-  
-  This is how I label my frames.\
-  Dam is the dam\
-  single is the pup\
-  The point names are self-explanatory, see image below. 
-  ![image](https://github.com/user-attachments/assets/60d822fa-b52d-49e4-9b2c-7a3776c0e1d2)
-  ![image](https://github.com/user-attachments/assets/5091cffd-0e47-4c6d-8cc6-ccf81732f8e0)
-  ![image](https://github.com/user-attachments/assets/c349c316-2b01-49af-b9f0-47eb65d51e2b)
+|This is how I label my frames.
+|Dam is the dam
+|single is the pup
+|The point names are self-explanatory, see image below. 
+  .. image::https://i.imgur.com/Gy43Vtb.png
+  .. image::https://i.imgur.com/IldAwqe.png
+  .. image::https://i.imgur.com/Ct0Gdy1.png
 
-  (Don't be afraid if you have differents colors than me, It changes)
-  
-  Now, it's up to you! Happy training !\
-  See how to train a maDLC model : https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html\
-  Once the model is satisfying, the new DLC model must be referenced in the code. 
+(Don't be afraid if you have differents colors than me, It changes)
 
-  
-</details>
+|Now, it's up to you! Happy training !
+|See how to train a maDLC model : https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html
+|Once the model is satisfying, the new DLC model must be referenced in the code. 
 
 
 
