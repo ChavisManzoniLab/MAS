@@ -18,9 +18,12 @@ Once you are in the environnment, you can launch the GUI by writing :
 
 The interface should open No more geek stuff for you 🥳
 
-How to use MAS
+Functionality
 ----------------------------
 
 .. _code_directive:
 
 .. image:: https://i.imgur.com/V95Zbv8.jpeg
+
+Here is the MAS GUI
+
