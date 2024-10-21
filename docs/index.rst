@@ -22,21 +22,7 @@ Summary
 
   install
   usage
-
-
-# Use 
-
-To open the environnment, use 
-
-`cd MYENVIRONNEMENTPATH`\
-`scripts\activate`
-
-Once you are in the environnment, you can launch the GUI by writing :
-
-`python -m MAS`
-
-The interface should open \
-No more geek stuff for you 🥳
+  model
 
 ## I wish to use my data and changes the models
 
