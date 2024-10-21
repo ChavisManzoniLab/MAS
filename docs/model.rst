@@ -17,13 +17,13 @@ First, Create a new maDeepLabCut project
 
 .. _code_directive:
 
-.. image::https://i.imgur.com/ZFAeJ70.jpeg
+.. image:: https://i.imgur.com/ZFAeJ70.jpeg
 
 Open the config.yaml with any text editor. It should look like this
 
 .. _code_directive:
 
-.. image::https://i.imgur.com/2hDlBf2.jpeg
+.. image:: https://i.imgur.com/2hDlBf2.jpeg
 
 | Now, delete everything below the red line.
 | Copy and paste the layout.yaml located in main/DLC/Layout into your config.yaml\
@@ -40,16 +40,16 @@ IF your manipulation was good, the keypoint selection in Napari (down right) sho
 | The point names are self-explanatory, see image below. 
 
 .. _code_directive:
-  
-.. image::https://i.imgur.com/Gy43Vtb.png
+
+.. image:: https://i.imgur.com/Gy43Vtb.png
 
 .. _code_directive:
 
-.. image::https://i.imgur.com/IldAwqe.png
+.. image:: https://i.imgur.com/IldAwqe.png
 
 .. _code_directive:
 
-.. image::https://i.imgur.com/Ct0Gdy1.png
+.. image:: https://i.imgur.com/Ct0Gdy1.png
 
 (Don't be afraid if you have differents colors than me, It changes)
 
