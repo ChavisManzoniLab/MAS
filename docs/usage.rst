@@ -19,7 +19,7 @@ Once you are in the environnment, you can launch the GUI by writing :
 The interface should open No more geek stuff for you 🥳
 
 Functionality
-=====================
+--------------
 
 Presentation
 -------------
