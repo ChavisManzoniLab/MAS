@@ -1,32 +1,34 @@
-Model
+Models and How to change them
 =======
 
-The pipeline is using 2 differents inferences : 
+Summary
+----------
 
-One multianimal DeepLabCut model detecting the pup and the dam. \
-One Detectron2 model detecting the nest. 
+MAS is using 2 differents inferences : 
 
-### Change maDeepLabcut model
+Mas utilize a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut>`_ detection of both the pup and the dam, and an automated detection of the Nest using `Detectron2 <https://github.com/facebookresearch/detectron2?tab=readme-ov-file#learn-more-about-detectron2>`_
 
-To change the maDeepLabCut model, I highly encourage to follow my tutorial to not recode my entire pipeline. 
-<details>
-  **<summary> Expand by clicking on the arrow to see the tutorial </summary>**
+Change maDeepLabcut model
+---------------------------
+
+To change the maDeepLabCut model, I highly encourage to follow my tutorial to not redo the entire pipeline. 
+
+First, Create a new maDeepLabCut project 
   
-  First, Create a new maDeepLabCut project 
-  
-  ![NewProject](https://github.com/user-attachments/assets/e0a40bd6-364e-4307-9a73-c4a921ce16aa)
+  .. image::https://i.imgur.com/ZFAeJ70.jpeg
 
   Open the config.yaml with any text editor. It should look like this
-  ![Yaml](https://github.com/user-attachments/assets/149162f3-ddec-4df1-918c-5cebbd0dd02f)
 
-  Now, delete everything below the red line. \
-  Copy and paste the layout.yaml located in main/DLC/Layout into your config.yaml\
-  /!\ Do not erase the first part, before the red line
+ .. image::https://i.imgur.com/2hDlBf2.jpeg
+
+  | Now, delete everything below the red line.
+  | Copy and paste the layout.yaml located in main/DLC/Layout into your config.yaml\
+  | Do not erase the part before the red line
 
   Now, you can extract some frames, and try to start label frame.
 
   IF your manipulation was good, the keypoint selection in Napari (down right) should look like the picture  
-  ![Success](https://github.com/user-attachments/assets/826ed7f4-d582-4940-bbb8-21c60e8e715c)
+  .. image::https://i.imgur.com/YpshHaL.jpeg
 
   
   This is how I label my frames.\
