@@ -1,17 +1,25 @@
-.. MAS documentation master file, created by
-   sphinx-quickstart on Wed Oct 16 12:04:46 2024.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+MAS-PRT
+===================================
+**Machine-automated scoring of Pup retrieval test**
+------------------------------------
 
-MAS documentation
-=================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+Mas is a pipeline allowing for an automatic scoring of pup retrieval test. It computes automatically multiple variables, including 
 
+- Time to first encounter
+- Time to retrieve the pup
+- Distance
+- Size of the Nest
+
+More information in *DOI*
+
+To work, Mas utilize a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut>`_ detection of both the pup and the dam, and an automated detection of the Nest using `Detectron2 <https://github.com/facebookresearch/detectron2?tab=readme-ov-file#learn-more-about-detectron2>`_
+
+Summary
+------------------
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
 
+  install
+  usage
+  model

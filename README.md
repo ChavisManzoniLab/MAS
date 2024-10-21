@@ -2,6 +2,8 @@
 
 Machine-automated scoring of Pup retrieval test
 
+https://mas.readthedocs.io/
+
 Mas is a pipeline allowing for an automatic scoring of pup retrieval test. It computes automatically multiple variables, including 
 
 - Time to first encounter
