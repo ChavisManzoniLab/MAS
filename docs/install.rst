@@ -8,8 +8,8 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
 .. _code_directive:
 
 .. figure:: https://education.launchcode.org/lchs/_images/win-python-installer.png
-
-   When installing Python, check the "Add Python to PATH"
+ :alt: Add Python to path
+ When installing Python, check the "Add Python to PATH"
 
 | Open the terminal 
 | In the terminal => 
