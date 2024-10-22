@@ -2,7 +2,9 @@
 
 Machine-automated scoring of Pup retrieval test
 
-https://mas.readthedocs.io/
+[Instruction manual](https://mas.readthedocs.io/)
+
+
 
 Mas is a pipeline allowing for an automatic scoring of pup retrieval test. It computes automatically multiple variables, including 
 
@@ -13,6 +15,9 @@ Mas is a pipeline allowing for an automatic scoring of pup retrieval test. It co
 
 More information in *DOI*
 
+[Installation guide](https://mas.readthedocs.io/en/latest/install.html#installation)
+
+
 To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an automated detection of the Nest using Detectron2
 
-https://mas.readthedocs.io/
+
