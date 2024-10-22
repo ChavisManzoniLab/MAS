@@ -59,7 +59,8 @@ IF your manipulation was good, the keypoint selection in Napari (down right) sho
 
 
 
-### Change Detectron2 Nest detection model
+Change Nest detection model
+----------------------------
 
 To train another Detectron2 model, I would strongly suggest to use the method offered by LabGym. 
 
