@@ -5,7 +5,12 @@ Install Git : https://git-scm.com/downloads
 
 Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (INSTALL x64)
 
-When installing Python, check the "Add Python to PATH" 
+.. _code_directive:
+
+.. figure:: https://education.launchcode.org/lchs/_images/win-python-installer.png
+ When installing Python, check the "Add Python to PATH"
+  
+
 
 | Open the terminal 
 | In the terminal => 
