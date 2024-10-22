@@ -32,7 +32,10 @@ Open the config.yaml with any text editor. It should look like this
 Now, you can extract some frames, and try to start label frame.
 
 IF your manipulation was good, the keypoint selection in Napari (down right) should look like the picture  
-  .. image::https://i.imgur.com/YpshHaL.jpeg
+
+.. _code_directive:
+
+.. image::https://i.imgur.com/YpshHaL.jpeg
 
 | This is how I label my frames.
 | Dam is the dam
