@@ -11,9 +11,10 @@ Mas utilize a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut>`_ detec
 Change maDeepLabcut model
 ---------------------------
 
-To change the maDeepLabCut model, I highly encourage to follow my tutorial to not redo the entire pipeline. 
+To change the maDeepLabCut model, follow the tutorial to not redo the entire pipeline. 
 
-First, Create a new maDeepLabCut project 
+| First, Install the DeepLabCut gui and create a new maDeepLabCut project
+| Installing the DeepLabCut gui in another environnement might be a good idea to avoid conflict
 
 .. _code_directive:
 
@@ -35,12 +36,12 @@ IF your manipulation was good, the keypoint selection in Napari (down right) sho
 
 .. _code_directive:
 
-.. image::https://i.imgur.com/YpshHaL.jpeg
+.. image:: https://i.imgur.com/YpshHaL.jpeg
 
-| This is how I label my frames.
+| This is how frames were labeled
 | Dam is the dam
 | single is the pup
-| The point names are self-explanatory, see image below. 
+| The point names are self-explanatory, as shown in the image below
 
 .. _code_directive:
 
@@ -54,11 +55,13 @@ IF your manipulation was good, the keypoint selection in Napari (down right) sho
 
 .. image:: https://i.imgur.com/Ct0Gdy1.png
 
-(Don't be afraid if you have differents colors than me, It changes)
+(Don't be afraid if you have differents colors than on the pictures, It may vary)
 
 | Now, it's up to you! Happy training !
 | See how to train a maDLC model : https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html
 | Once the model is satisfying, the new DLC model must be referenced in the code. 
+| This can be done in the config.py
+| You should change the pathway from DLCDETECTOR
 
 
 
@@ -71,6 +74,8 @@ https://github.com/umyelab/LabGym?tab=readme-ov-file#2-use-trained-detectors
 
 | 2 frames should be enough, depending on the quantity of video you have
 | Once your model is satistying, you should modify the detectorPath accordingly with yours. 
+| This can be done in the config.py
+| You should change the pathway from NESTDETECTOR
 
 | Now that you have LabGym on your computer, feel free to try it out ! 
 | It's a formidable tool for quantifying behavior on videos :)
