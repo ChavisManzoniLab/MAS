@@ -38,7 +38,17 @@ Main Part
   | The process can be long, especially with numerous videos or absence of a GPU
   | The result will be outputted as follow :
 
-  TODO
+.. code-block:: console
+
+ ParentFolder
+ ├───csv             => CSV extraction from DLC
+ ├───DLCTracking     => Video with DLC detection
+ ├───results         => CSV of results
+ ├───video_With_Nest => Video with Nest polygon detection
+ └───VidFolder       => Folder of the video
+    ├───frames       => Frames extracted for the Nest detection
+    ├───Video1.MP4
+    └───NestImage    => Picture of Nest detection
 
 Usage of anterior inferences
 -----------------------------
