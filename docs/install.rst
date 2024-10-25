@@ -22,7 +22,7 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
 
 **Do not write mypythonpath, but link but your python 3.9.XX executable instead**
 
-By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/Programs/Python/Python39/python
+*By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/Programs/Python/Python39/python*
 
 2. Activate the environnement you just created :
 
@@ -46,11 +46,16 @@ By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/
 5. Install CUDA
 
 | A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
-| Beware, Cuda version will be dependent of your GPU
+| https://developer.nvidia.com/cuda-toolkit
+| *Beware, Cuda version may be dependent of your GPU*
+| 
 
-** MAY VARY DEPENDING ON YOUR GPU **
 
-6. See https://pytorch.org/get-started/locally/ 
+6. Install the good version of Torch 
+
+See https://pytorch.org/get-started/locally/ to find the version that suit your CUDA
+
+*Following line is for illustration purpose, and probably won't fit your CUDA and GPU*
 
 .. code-block:: console
 
