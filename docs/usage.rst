@@ -1,4 +1,4 @@
-Launch MAS GUI
+Launch MAS GUI (Graphical User Interface)
 ==============
 
 To open the environment, use
