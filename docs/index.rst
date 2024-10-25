@@ -13,7 +13,7 @@ MAS is a pipeline designed to score automatically the Pup Retrieval Test. It com
 
 More information in *DOI*
 
-To work, MAS utilize a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut>`_ detection of both the pup and the dam, and an automated detection of the nest using `Detectron2 <https://github.com/facebookresearch/detectron2?tab=readme-ov-file#learn-more-about-detectron2>`_
+To work, MAS uses a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut>`_ detection of both the pup and the dam, and an automated detection of the nest using `Detectron2 <https://github.com/facebookresearch/detectron2?tab=readme-ov-file#learn-more-about-detectron2>`_
 
 Summary
 ------------------
