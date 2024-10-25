@@ -86,7 +86,7 @@ Visualization
   | Result will be outputted as .mp4 videos
 
 7. Show Nest prediction
-  | If selected, will draw the infered nest on an image for each videos
+  | If selected, will draw the infered nest on an image for each video
   | Results are saved in a folder called NestImage, located with the videos
 
 8. Show DeepLabCut prediction on video
