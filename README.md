@@ -1,6 +1,6 @@
 # MAS-PRT
 
-Machine-automated scoring of Pup retrieval test
+Machine-Automated Scoring of Pup Retrieval Test
 
 [Instruction manual](https://mas.readthedocs.io/)
 
@@ -18,6 +18,6 @@ More information in *DOI*
 [Installation guide](https://mas.readthedocs.io/en/latest/install.html#installation)
 
 
-To work, Mas utilize a DeepLabCut detection of both the pup and the dam, and an automated detection of the Nest using Detectron2
+To work, MAS uses a DeepLabCut detection of both the pup and the dam, and an automated detection of the Nest using Detectron2
 
 
