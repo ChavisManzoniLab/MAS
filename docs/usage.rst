@@ -1,13 +1,13 @@
 Launch MAS GUI
 ==============
 
-To open the environnment, use
+To open the environment, use
 
 .. code-block:: console
 
   cd MAS\\scripts\\activate
 
-Once you are in the environnment, you can launch the GUI by writing :
+Once you are in the environment, you can launch the GUI by writing :
 
 .. code-block:: console
 
