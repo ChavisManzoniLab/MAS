@@ -4,8 +4,6 @@ Models and How to change them
 .. Note::
    Changing the model requires basics knowledges in developpement and may be a leap in complexity
 
-
-
 Summary
 ----------
 
@@ -16,10 +14,15 @@ Mas uses a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut>`_ detectio
 Change maDeepLabcut model
 ---------------------------
 
-To change the maDeepLabCut model, follow the tutorial to not redo the entire pipeline. 
+| First, take a look at how to train a multianimal Deeplabcut model : 
+| https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html
 
-| First, Install the DeepLabCut gui and create a new maDeepLabCut project
-| Installing the DeepLabCut gui in another environnement might be a good idea to avoid conflict
+| It is highly recommended to follow the next step to not mess up the pipeline
+
+| Install the DeepLabCut Gui and create a new maDeepLabCut project
+
+.. note::
+   Installing the DeepLabCut Gui in another environnement might be a good idea to avoid conflict
 
 .. _code_directive:
 
@@ -33,11 +36,11 @@ Open the config.yaml with any text editor. It should look like this
 
 | Now, delete everything below the red line.
 | Copy and paste the layout.yaml located in main/DLC/Layout into your config.yaml\
-| Do not erase the part before the red line
+| **DO NOT** erase the part before the red line
 
-Now, you can extract some frames, and try to start label frame.
+| Now, you can extract some frames, and try to start label frame.
 
-IF your manipulation was good, the keypoint selection in Napari (down right) should look like the picture  
+| If your manipulation was good, the keypoint selection in Napari (down right) should look like the picture  
 
 .. _code_directive:
 
@@ -60,7 +63,8 @@ IF your manipulation was good, the keypoint selection in Napari (down right) sho
 
 .. image:: https://i.imgur.com/Ct0Gdy1.png
 
-(Don't be afraid if you have differents colors than on the pictures, It may vary)
+.. Note::
+   Don't be afraid if you have differents colors than on the pictures, It may vary
 
 | Now, it's up to you! Happy training !
 | See how to train a maDLC model : https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html
@@ -77,8 +81,8 @@ To train another Detectron2 model, I would strongly suggest to use the method of
 
 https://github.com/umyelab/LabGym?tab=readme-ov-file#2-use-trained-detectors
 
-| 2 frames should be enough, depending on the quantity of video you have
-| Once your model is satistying, you should modify the detectorPath accordingly with yours. 
+| Extracting 2 frames per videos should be enough, depending on the quantity of videos you have
+| Once your model is satistying, you must modify the detectorPath accordingly with yours. 
 | This can be done in the config.py
 | You should change the pathway from NESTDETECTOR
 
