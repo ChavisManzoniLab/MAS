@@ -82,8 +82,8 @@ Visualization
 
 6. Create video with Nest
   | If selected, will draw the infered nest on each video.
-  | Result are saved in a folder called video_With_Nest in the same folder where the folder selected in 1. is
-  | Result will be outputted as .mp4 videos
+  | Results are saved in a folder called video_With_Nest in the same folder where the folder selected in 1. is
+  | Results will be outputted as .mp4 videos
 
 7. Show Nest prediction
   | If selected, will draw the infered nest on an image for each video
@@ -91,7 +91,7 @@ Visualization
 
 8. Show DeepLabCut prediction on video
   | If selected, will draw the infered DLC detection on each video
-  | Result are saved in a folder called DLCTracking in the same folder where the folder selected in 1. is
+  | Results are saved in a folder called DLCTracking in the same folder where the folder selected in 1. is
 
 .. note::
    Dam will be labeled in purple 
