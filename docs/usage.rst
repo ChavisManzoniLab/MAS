@@ -73,9 +73,9 @@ Inferences config
   | Choose the threshold for an acceptable DLC detection.
   | Every point with a likelihood inferior to the selected value will be trashed for the analysis
 
-5. Nest border Threshold
+5. Non-border pixel threshold
   | Choose the pixel threshold before considering an Animal inside the nest
-  | Useful for animal staying at the border of the nest for long periods.
+  | Useful for animal staying at the border of the nest for longer periods.
 
 Visualization
 ---------------
@@ -92,7 +92,9 @@ Visualization
 8. Show DeepLabCut prediction on video
   | If selected, will draw the infered DLC detection on each video
   | Result are saved in a folder called DLCTracking in the same folder where the folder selected in 1. is
-  | Dam is in purple
-  | Pup is in red
-  | Useful to spot bad detection
+
+.. note::
+   Dam will be labeled in purple 
+   Pup will be labeled in red
+   Useful to spot bad detection
 
