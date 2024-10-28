@@ -35,7 +35,7 @@ Open the config.yaml with any text editor. It should look like this
 .. image:: https://i.imgur.com/2hDlBf2.jpeg
 
 | Now, delete everything below the red line.
-| Copy and paste the layout.yaml located in main/DLC/Layout into your config.yaml\
+| Copy and paste the layout.yaml located `here <https://github.com/ChavisManzoniLab/MAS/tree/main/MAS/DLC/Layout>`_ into your config.yaml
 | **DO NOT** erase the part before the red line
 
 | Now, you can extract some frames, and try to start label frame.
