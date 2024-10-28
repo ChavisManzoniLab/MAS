@@ -82,7 +82,7 @@ To train another Detectron2 model, I would strongly suggest to use the method of
 https://github.com/umyelab/LabGym?tab=readme-ov-file#2-use-trained-detectors
 
 | Extracting 2 frames per videos should be enough, depending on the quantity of videos you have
-| Once your model is satistying, you must modify the detectorPath accordingly with yours. 
+| Once your model is satisfying, you must modify the detectorPath accordingly with yours. 
 | This can be done in the config.py
 | You should change the pathway from NESTDETECTOR
 
