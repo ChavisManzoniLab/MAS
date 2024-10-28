@@ -48,8 +48,9 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
 
 | A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
 | https://developer.nvidia.com/cuda-toolkit
-| *Beware, Cuda version may be dependent of your GPU*
-| 
+
+.. note:: 
+  Beware, Cuda version may be dependent of your GPU
 
 
 6. Install the good version of Torch 
