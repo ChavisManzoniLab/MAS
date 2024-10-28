@@ -54,7 +54,7 @@ Usage of anterior inferences
 -----------------------------
 
 | In the case where videos where already analyzed once, MAS stores the inferences.
-| It can be a gain of time in many cases : Tweaking the configs, Creating vizualitions on some videos...
+| It can be a gain of time in many cases : Tweaking the configs, creating vizualisations on parts of the videos...
 
 2. Use stored nest 
   | Use stored nest will read the .pickle file containing a dictionary of videos and nest detection
