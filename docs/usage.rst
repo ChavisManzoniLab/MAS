@@ -95,6 +95,8 @@ Visualization
 
 .. note::
    | Dam will be labeled in purple 
+
    | Pup will be labeled in red
+
    | Useful to spot bad detection
 
