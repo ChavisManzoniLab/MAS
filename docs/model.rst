@@ -1,6 +1,11 @@
 Models and How to change them
 =======
 
+.. Note::
+   Changing the model requires basics knowledges in developpement and may be a leap in complexity
+
+
+
 Summary
 ----------
 
