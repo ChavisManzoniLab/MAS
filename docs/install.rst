@@ -20,9 +20,10 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
 
  mypythonpath -m venv MAS
 
-**Do not write mypythonpath, but link but your python 3.9.XX executable instead**
+.. warning:: 
+   Do not write mypythonpath, but link but your python 3.9.XX executable instead
 
-*By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/Programs/Python/Python39/python*
+   *By default, mypythonpath should be here : C:/Users/Your user name/AppData/Local/Programs/Python/Python39/python*
 
 2. Activate the environnement you just created :
 
@@ -55,7 +56,8 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
 
 See https://pytorch.org/get-started/locally/ to find the version that suit your CUDA
 
-*Following line is for illustration purpose, and probably won't fit your CUDA and GPU*
+.. note:: 
+   *Following line is for illustration purpose, and probably won't fit your CUDA and GPU*
 
 .. code-block:: console
 
