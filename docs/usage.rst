@@ -16,7 +16,7 @@ Once you are in the environment, you can launch the GUI by writing :
 The interface should open No more geek stuff for you 🥳
 
 Functionality
-==============
+**************
 
 .. _code_directive:
 
