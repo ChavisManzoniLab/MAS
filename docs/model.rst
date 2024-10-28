@@ -19,10 +19,10 @@ Change maDeepLabcut model
 
 | It is highly recommended to follow the next step to not mess up the pipeline
 
-| Install the DeepLabCut Gui and create a new maDeepLabCut project
+| Install the DeepLabCut GUI and create a new maDeepLabCut project
 
 .. note::
-   Installing the DeepLabCut Gui in another environnement might be a good idea to avoid conflict
+   Installing the DeepLabCut GUI in another environnement might be a good idea to avoid conflict
 
 .. _code_directive:
 
