@@ -94,7 +94,7 @@ Visualization
   | Result are saved in a folder called DLCTracking in the same folder where the folder selected in 1. is
 
 .. note::
-   Dam will be labeled in purple 
-   Pup will be labeled in red
-   Useful to spot bad detection
+   | Dam will be labeled in purple 
+   | Pup will be labeled in red
+   | Useful to spot bad detection
 
