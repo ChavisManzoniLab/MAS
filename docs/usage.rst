@@ -81,7 +81,7 @@ Visualization
 
 8. Show DeepLabCut prediction on video
   | If selected, will draw the infered DLC detection on each video
-  | Results are saved in a folder called DLCTracking in the same folder where the folder selected in 1. is
+  | Results are saved in DLCTracking, see :ref:`Arborescence`.
 
 .. note::
    Dam will be labeled in purple 
@@ -92,7 +92,7 @@ Visualization
 
 
 Arborescence
---------------
+**************
 
 .. code-block:: console
 
