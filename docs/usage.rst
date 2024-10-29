@@ -36,7 +36,7 @@ Main
 9. RUN
   | Launch the pipeline on selected video.
   | The process can be long, especially with numerous videos or absence of a GPU
-  | The result will be outputted as follow :
+  | The result will be outputted as shown in `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#arborescence>`_
 
 Usage of anterior inferences
 -----------------------------
@@ -47,12 +47,12 @@ Usage of anterior inferences
 2. Use stored nest 
   | Use stored nest will read the .pickle file containing a dictionary of videos and nest detection
   | The Detectron2 inference will not be done again. 
-  | Will return an error if any video does not match the dict
+  | Will return an error if any video does not match the stored information
 
 3. Use stored DLC prediction
   | Use stored CSV outputted by the DLC inference. 
   | The DLC inference will not be done again
-  | Will return an error if any video does not match the dict
+  | Will return an error if any video does not match the stored information
 
 Inferences config
 -----------------------
@@ -72,16 +72,16 @@ Visualization
 
 6. Create video with Nest
   | If selected, will draw the infered nest on each video.
-  | Results are saved in a folder called video_With_Nest in the same folder where the folder selected in 1. is
+  | Results are saved in video_With_Nest, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#arborescence>`_
   | Results will be outputted as .mp4 videos
 
 7. Show Nest prediction
   | If selected, will draw the infered nest on an image for each video
-  | Results are saved in a folder called NestImage, located with the videos
+  | Results are saved in NestImage, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#arborescence>`_
 
 8. Show DeepLabCut prediction on video
   | If selected, will draw the infered DLC detection on each video
-  | Results are saved in DLCTracking, see :ref:`Arborescence`.
+  | Results are saved in DLCTracking, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#arborescence>`_
 
 .. note::
    Dam will be labeled in purple 
