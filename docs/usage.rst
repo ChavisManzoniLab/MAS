@@ -1,4 +1,4 @@
-Launch MAS GUI (Graphical User Interface)
+MAS GUI (Graphical User Interface)
 ==============
 
 To open the environment, use
@@ -13,7 +13,7 @@ Once you are in the environment, you can launch the GUI by writing :
 
   python -m MAS
 
-The interface should open No more geek stuff for you 🥳
+The interface should open. No more geek stuff for you 🥳
 
 Functionality
 **************
@@ -72,10 +72,12 @@ Inferences config
 4. DLC point likelihood
   | Choose the threshold for an acceptable DLC detection.
   | Every point with a likelihood inferior to the selected value will be trashed for the analysis
+  | Range : 0-1
 
 5. Non-border pixel threshold
   | Choose the pixel threshold before considering an Animal inside the nest
   | Useful for animal staying at the border of the nest for longer periods.
+  | Range : ≥0
 
 Visualization
 ---------------
