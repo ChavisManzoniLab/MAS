@@ -36,7 +36,7 @@ Main
 9. RUN
   | Launch the pipeline on selected video.
   | The process can be long, especially with numerous videos or absence of a GPU
-  | The result will be outputted as shown in `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#arborescence>`_
+  | The result will be outputted as shown in `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#id4>`_
 
 Usage of anterior inferences
 -----------------------------
@@ -72,16 +72,16 @@ Visualization
 
 6. Create video with Nest
   | If selected, will draw the infered nest on each video.
-  | Results are saved in video_With_Nest, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#arborescence>`_
+  | Results are saved in video_With_Nest, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#id4>`_
   | Results will be outputted as .mp4 videos
 
 7. Show Nest prediction
   | If selected, will draw the infered nest on an image for each video
-  | Results are saved in NestImage, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#arborescence>`_
+  | Results are saved in NestImage, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#id4>`_
 
 8. Show DeepLabCut prediction on video
   | If selected, will draw the infered DLC detection on each video
-  | Results are saved in DLCTracking, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#arborescence>`_
+  | Results are saved in DLCTracking, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#id4>`_
 
 .. note::
    Dam will be labeled in purple 
