@@ -23,9 +23,9 @@ Functionality
 .. image:: https://i.imgur.com/omAEHU3.jpeg
 
 | Here is the MAS GUI
-| I'll present every functionality offered by the MAS GUI
+| Every functionality offered by the MAS GUI are described below
 
-Main Part
+Main
 -----------
 1. Select folder
   | Click on the grey button to select a folder where .MP4 of PRT videos. 
@@ -37,18 +37,6 @@ Main Part
   | Launch the pipeline on selected video.
   | The process can be long, especially with numerous videos or absence of a GPU
   | The result will be outputted as follow :
-
-.. code-block:: console
-
- ParentFolder
- ├───csv             => CSV extraction from DLC
- ├───DLCTracking     => Video with DLC detection
- ├───results         => CSV of results
- ├───video_With_Nest => Video with Nest polygon detection
- └───VidFolder       => Folder of the video
-    ├───frames       => Frames extracted for the Nest detection
-    ├───Video1.MP4
-    └───NestImage    => Picture of Nest detection
 
 Usage of anterior inferences
 -----------------------------
@@ -101,4 +89,20 @@ Visualization
    Pup will be labeled in red
 
    Useful to spot bad detection
+
+
+Arborescence
+--------------
+
+.. code-block:: console
+
+ ParentFolder
+ ├───csv             => CSV extraction from DLC
+ ├───DLCTracking     => Video with DLC detection (8)
+ ├───results         => CSV of results 
+ ├───video_With_Nest => Video with Nest polygon detection (6)
+ └───VidFolder       => Folder of the video (selected in 1)
+    ├───frames       => Frames extracted for the Nest detection
+    ├───Video1.MP4
+    └───NestImage    => Picture of the nest detection (7)
 
