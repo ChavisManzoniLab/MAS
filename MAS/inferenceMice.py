@@ -2,20 +2,19 @@ import os
 from os import path
 import shutil
 import deeplabcut
-import glob
 from MAS.config import *
 
 
 def inference_mice(video_path):
-    destfolder = str(os.path.dirname(video_path) + '\csv')
-    deeplabcut.analyze_videos(config = CONFIG, videos = video_path, videotype = '.mp4' , shuffle = 1, save_as_csv=True, destfolder = destfolder)
+    dest_folder = str(os.path.dirname(video_path) + '\csv')
+    deeplabcut.analyze_videos(config = DLCDETECTOR, videos = video_path, videotype = '.mp4' , shuffle = 1, save_as_csv=True, destfolder = dest_folder)
 
 def show_pred(video_path, pcutoff):
-    CSVfolder = str(os.path.dirname(video_path) + '\csv')
-    files = os.listdir(CSVfolder)
+    csv_folder = str(os.path.dirname(video_path) + '\csv')
+    files = os.listdir(csv_folder)
     for file in files:
-        shutil.copy(os.path.join(CSVfolder, file), os.path.join(video_path, file))
-    deeplabcut.create_labeled_video(config=CONFIG, videos=video_path , color_by='individual', shuffle = 1, pcutoff = pcutoff)
+        shutil.copy(os.path.join(csv_folder, file), os.path.join(video_path, file))
+    deeplabcut.create_labeled_video(config=DLCDETECTOR, videos=video_path , color_by='individual', shuffle = 1, pcutoff = pcutoff)
     for file in files:
         os.remove(os.path.join(video_path, file))
     vidList = os.listdir(video_path)

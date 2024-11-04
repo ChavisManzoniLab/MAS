@@ -5,6 +5,7 @@ import glob
 from MAS.functions import *
 import tkinter.ttk
 from MAS.inferenceMice import *
+import time
 path = ' '
 
 def GUI():
@@ -32,6 +33,8 @@ def GUI():
         pathway['text'] = path + "\n" + '——————'+ "\n" + str(len(vidlist)) + nicetext
 
     def launch_analyze(pathway):
+        start_time = time.time()
+        print('STARTING')
         print(pathway) 
         use_backup = storedNest.get()
         use_CSV = storedCSV.get()
@@ -48,6 +51,7 @@ def GUI():
             quit()
         PRTAnalysis(video_path = pathway , use_backup=use_backup, show_nest = visual, use_CSV = use_CSV, draw_DLC_pred = draw_pred,
                     nest_border_threshold = new_nest_threshold, DLC_threshold = new_DLC_threshold , draw_nest = draw_nest_pred) 
+        print("--- %s seconds ---" % (time.time() - start_time))
 
     window = tk.Tk()
     window.title('WELCOME TO MAS')

@@ -10,22 +10,16 @@ import os
 from PIL import Image
 import numpy as np
 from matplotlib import pyplot as plt
-import glob
 from shapely import Polygon
 import pandas as pd
 import math as m
-import numpy as np
 from os import mkdir, path
 import random
 import glob
 import stat
 import shutil
-from statistics import mean
 import pickle 
-from MAS.config import ROOT
-
-min_area_threshold = 250
-
+from MAS.config import *
 
 def frame_extract(video_path, frame_per_vid = 1):
     """Extract random frames for each video in pathToVid
@@ -44,12 +38,14 @@ def frame_extract(video_path, frame_per_vid = 1):
     path_to_video = str(video_path+"\*.mp4")
      #Clear target output directory if needed
     output = glob.glob(str(video_path + "/frames/")) 
+
     try:
         for f in output:
                 os.chmod(f, stat.S_IWRITE)
                 shutil.rmtree(f)
     except:
         pass
+
     os.makedirs(str(video_path + "/frames/"), exist_ok = True)
     #Create a sub-directory for each video, containing extracted frames
     for video in glob.glob(path_to_video):
@@ -115,9 +111,7 @@ def predict_nest(detector_path, image_dir, visual = False, nest_simplification =
     cfg.merge_from_file(os.path.join(detector_path,'config.yaml'))
     cfg.MODEL.WEIGHTS=os.path.join(detector_path,'model_final.pth')
     cfg.MODEL.DEVICE='cuda' if torch.cuda.is_available() else 'cpu'
-    #cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5
     predictor=DefaultPredictor(cfg)                         
-    #image_dir = str(image_dir+"\*.jpg")
     result = []
     results = {"id" : [], "video" : [], "videopath" : [] , "confidence" : [], "polygon" : [], "area" : [], 'rawpolygon' : []}
     i = 0
@@ -129,17 +123,15 @@ def predict_nest(detector_path, image_dir, visual = False, nest_simplification =
     for folder in glob.glob(str(image_dir +"\*")):
         vidname = str(path.basename(path.normpath(folder))).replace(".mp4","")
         mask = []
-        teste =  0
+        
         for image in glob.glob(str(folder + "\*.jpg")):
-            teste += 1
-            print(teste)
             inputs = cv2.imread(image)
             result = predictor(inputs)
             
             for masknb, pred_mask in enumerate(result['instances'].pred_masks.cpu()) :
-                print(result['instances'].scores.cpu().numpy()[masknb])
+                #print(result['instances'].scores.cpu().numpy()[masknb])
                 area = cv2.countNonZero(pred_mask.numpy().astype("uint8"))
-                if result['instances'].scores.cpu().numpy()[masknb] >= 0.8 and area >= min_area_threshold: 
+                if result['instances'].scores.cpu().numpy()[masknb] >= 0.8 and area >= MIN_AREA_THRESHOLD: 
                     mask.append(pred_mask.numpy().astype("uint8"))
                 else: print("Ignored")
 
@@ -192,17 +184,24 @@ def predict_nest(detector_path, image_dir, visual = False, nest_simplification =
             results["polygon"].append(polygon)
             results["area"].append(polygon.area)
             results["rawpolygon"].append(polygon2)
-        
+    
         except:
             results["confidence"].append(0)
             results["polygon"].append(0)
             results["area"].append(0)
+            results["rawpolygon"].append(0)
         
         i += 1 
-    
+    print('Video %s done' %(vidname))
+    results['id'] = tuple(results['id'])
+    results['video'] = tuple(results['video'])
+    results['videopath'] = tuple(results['videopath'])
+    results["confidence"] = tuple(results["confidence"])
+    results['area'] = tuple(results['area'])
+    results['rawpolygon'] = tuple(results['rawpolygon'])
+    results['polygon'] = tuple(results['polygon'])
     filename = ROOT
     os.makedirs(str(filename), exist_ok=True)
     with open(filename+ '\\Models\\nestDict.pkl', 'wb') as f:
         pickle.dump(results, f)
     return results
-

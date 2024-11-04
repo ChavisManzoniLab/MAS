@@ -4,13 +4,12 @@ import numpy as np
 import cv2
 from os import mkdir, path
 from shapely import Polygon, Point
-import random
 import glob
 from MAS.InferenceNest import *
 import stat
 import shutil
 from statistics import mean
-import MAS.config
+from MAS.config import *
 from MAS.inferenceMice import *
 
 def dist(B,A):
@@ -22,6 +21,7 @@ def dist(B,A):
     return m.sqrt(X+Y)
 
 def mean_calculator(df, likelihood = 0.7):
+
     """
     Outputs a dataframe with the mean coordinates of the head of the dam and the pup for each frame.
     if not detected, the default value is -1.
@@ -187,7 +187,7 @@ def dist_to_nest_border(polygon, x, y):
     animal = Point(x,y)
     return polygon.exterior.distance(animal)
 
-def success(df, poly, nest_border_threshold = 10):
+def success(df, poly, nest_border_threshold = NEST_BORDER_THRESHOLD):
     """
     returns the frame of the PRT success
     —————————
@@ -301,7 +301,10 @@ def timestamp_read(path_to_video, csv):
 
 def output_results(path_to_csv, video_path, path_to_output, poly_dict, nest_border_threshold, DLC_threshold):
     #Write result in a CSV file
-    dataf = pd.DataFrame(columns = ('video', 'success frame','success sec', 'firstEncounter frame', 'firstEncounter sec','timeFEtoRet sec', 'distanceToFirstEncounter pixel', 'distanceFEtoRet pixel'))
+    dataf = pd.DataFrame(columns = ('video', 'success frame','success sec', 
+                                    'firstEncounter frame', 'firstEncounter sec',
+                                    'timeFEtoRet sec', 'distanceToFirstEncounter pixel',
+                                      'distanceFEtoRet pixel'))
  
     #Prepare the list to match CSV and video
     path_to_csv = str(path_to_csv+"\*.csv")
@@ -396,7 +399,8 @@ def output_results(path_to_csv, video_path, path_to_output, poly_dict, nest_bord
     increment = 0
     while not file_created:
         try: 
-            data = pd.ExcelWriter(path_to_output +'/dataOutput_' + str(increment) + '.xlsx' , mode = 'x', engine='xlsxwriter') #the output file with the success
+            data = pd.ExcelWriter(path_to_output +'/dataOutput_' + str(increment) + '.xlsx' ,
+                                   mode = 'x', engine='xlsxwriter') #the output file with the success
             file_created = True
         except:
             increment += 1
@@ -445,7 +449,7 @@ def draw_nest_on_vid(video_path, nest_poly, output_path= None):
 
 def PRTAnalysis(video_path , detector_path = NESTDETECTOR,  use_backup = False, 
                 show_nest = False, use_CSV = False, draw_DLC_pred = False,  draw_nest = False, 
-                nest_border_threshold = 10 , DLC_threshold = 0.7):
+                nest_border_threshold = NEST_BORDER_THRESHOLD , DLC_threshold = DLC_THRESHOLD):
     """
     The main function
     Launch the detection of the nest via detectron2
@@ -476,7 +480,8 @@ def PRTAnalysis(video_path , detector_path = NESTDETECTOR,  use_backup = False,
     if not os.path.isdir(pathToOutput):
         os.makedirs(pathToOutput)
     dest_folder = str(os.path.dirname(video_path) + '/csv')
-    output_results(path_to_csv = dest_folder, video_path=video_path, path_to_output = pathToOutput, poly_dict = nest_dict, nest_border_threshold = nest_border_threshold, DLC_threshold = DLC_threshold)
+    output_results(path_to_csv = dest_folder, video_path=video_path, path_to_output = pathToOutput, poly_dict = nest_dict,
+                    nest_border_threshold = nest_border_threshold, DLC_threshold = DLC_threshold)
     if draw_nest :
         print('Drawing the nest detection on each video')
         for file in files:
