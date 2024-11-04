@@ -54,15 +54,17 @@ Open the config.yaml with any text editor. It should look like this
 .. _code_directive:
 
 .. image:: https://i.imgur.com/Gy43Vtb.png
+   :width: 400
 
 .. _code_directive:
 
 .. image:: https://i.imgur.com/IldAwqe.png
+   :width: 400
 
 .. _code_directive:
 
 .. image:: https://i.imgur.com/Ct0Gdy1.png
-
+   :width: 600
 .. Note::
    Don't be afraid if you have differents colors than on the pictures, It may vary
 
