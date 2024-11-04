@@ -1,10 +1,10 @@
 MAS-PRT
 ===================================
-**Machine-automated scoring of Pup retrieval test**
+**Machine-Automated Scoring of Pup Retrieval Test**
 ------------------------------------
 
 
-Mas is a pipeline allowing for an automatic scoring of pup retrieval test. It computes automatically multiple variables, including 
+MAS is a pipeline designed to score automatically the Pup Retrieval Test. It computes automatically multiple variables, including : 
 
 - Time to first encounter
 - Time to retrieve the pup
@@ -13,7 +13,7 @@ Mas is a pipeline allowing for an automatic scoring of pup retrieval test. It co
 
 More information in *DOI*
 
-To work, Mas utilize a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut>`_ detection of both the pup and the dam, and an automated detection of the Nest using `Detectron2 <https://github.com/facebookresearch/detectron2?tab=readme-ov-file#learn-more-about-detectron2>`_
+To work, MAS uses a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut>`_ detection of both the pup and the dam, and an automated detection of the nest using `Detectron2 <https://github.com/facebookresearch/detectron2?tab=readme-ov-file#learn-more-about-detectron2>`_
 
 Summary
 ------------------
