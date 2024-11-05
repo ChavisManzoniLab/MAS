@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "MasPRT"
 version = "0.1"
 authors = [
-  { name="Strauss Benjamin", email="Benjamin.strauss@inserm.fr" },
+  { name="Strauss Benjamin", email="cerilam@hotmail.fr" },
 ]
 description = "Machine automated scoring for pup retrieval test"
 readme = "README.md"
