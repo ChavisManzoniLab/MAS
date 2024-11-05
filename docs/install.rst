@@ -3,6 +3,11 @@ Installation
 
 Install Git : https://git-scm.com/downloads 
 
+Install Visual Studio C++ : `Visual Studio <https://visualstudio.microsoft.com/fr/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSFeaturesPage&passive=true&tailored=cplus&cid=2031#cplusplus>`_
+
+.. image:: https://i.imgur.com/deCNAyX.png
+  :width: 800
+
 Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (INSTALL x64)
 
 .. _code_directive:
