@@ -75,6 +75,9 @@ Visualization
   | Results are saved in video_With_Nest, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#id4>`_
   | Results will be outputted as .mp4 videos
 
+.. image:: https://i.imgur.com/JzdKvP2.jpeg
+   :width: 600
+
 7. Show Nest prediction
   | If selected, will draw the infered nest on an image for each video
   | Results are saved in NestImage, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#id4>`_
@@ -82,6 +85,9 @@ Visualization
 8. Show DeepLabCut prediction on video
   | If selected, will draw the infered DLC detection on each video
   | Results are saved in DLCTracking, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#id4>`_
+
+.. image:: https://i.imgur.com/GObPK5s.jpeg
+   :width: 600
 
 .. note::
    Dam will be labeled in purple 

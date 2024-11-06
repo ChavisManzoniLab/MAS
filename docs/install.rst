@@ -3,6 +3,11 @@ Installation
 
 Install Git : https://git-scm.com/downloads 
 
+Install Visual Studio C++ : `Visual Studio <https://visualstudio.microsoft.com/fr/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSFeaturesPage&passive=true&tailored=cplus&cid=2031#cplusplus>`_
+
+.. image:: https://i.imgur.com/deCNAyX.png
+  :width: 800
+
 Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (INSTALL x64)
 
 .. _code_directive:
@@ -36,13 +41,13 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
 
 .. code-block:: console
 
- pip install git+https://github.com/ChavisManzoniLab/MAS.git`
+ pip install git+https://github.com/ChavisManzoniLab/MAS.git
 
 4. Install detectron2
 
 .. code-block:: console
 
- python -m pip install git+https://github.com/facebookresearch/detectron2.git` 
+ python -m pip install git+https://github.com/facebookresearch/detectron2.git
 
 5. Install CUDA
 

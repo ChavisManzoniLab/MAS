@@ -23,3 +23,4 @@ Summary
   install
   usage
   model
+  troubleshooting
