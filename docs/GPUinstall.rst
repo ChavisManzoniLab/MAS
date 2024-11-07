@@ -1,4 +1,4 @@
-Installation
+Installation on GPU
 =================
 
 Install Git : https://git-scm.com/downloads 
