@@ -1,4 +1,4 @@
-Installation
+Installation for CPU
 =================
 
 Install Git : https://git-scm.com/downloads 
