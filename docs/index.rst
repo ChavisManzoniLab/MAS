@@ -15,6 +15,9 @@ More information in *DOI*
 
 To work, MAS uses a `DeepLabCut <http://www.mackenziemathislab.org/deeplabcut>`_ detection of both the pup and the dam, and an automated detection of the nest using `Detectron2 <https://github.com/facebookresearch/detectron2?tab=readme-ov-file#learn-more-about-detectron2>`_
 
+MAS can be installed to be used with or without GPU.
+If you have a great GPU, it is recommended to install the GPU version.
+
 Summary
 ------------------
 
