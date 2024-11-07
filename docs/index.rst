@@ -23,8 +23,8 @@ Summary
 
 .. toctree::
 
-  install on CPU
-  install on GPU
+  CPUinstall
+  GPUinstall
   usage
   model
   troubleshooting
