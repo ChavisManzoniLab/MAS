@@ -43,28 +43,10 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
 
  pip install git+https://github.com/ChavisManzoniLab/MAS.git
 
+All done ! 
+
 4. Install detectron2
 
 .. code-block:: console
 
  python -m pip install git+https://github.com/facebookresearch/detectron2.git
-
-5. Install CUDA
-
-| A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
-| https://developer.nvidia.com/cuda-toolkit
-
-.. note:: 
-  Beware, Cuda version may be dependent of your GPU
-
-
-6. Install the good version of Torch 
-
-See https://pytorch.org/get-started/locally/ to find the version that suit your CUDA
-
-.. note:: 
-   *Following line is for illustration purpose, and probably won't fit your CUDA and GPU*
-
-.. code-block:: console
-
- pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 
