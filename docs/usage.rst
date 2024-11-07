@@ -108,7 +108,8 @@ Arborescence
  ├───results         => CSV of results 
  ├───video_With_Nest => Video with Nest polygon detection (6)
  └───VidFolder       => Folder of the video (selected in 1)
-    ├───frames       => Frames extracted for the Nest detection
+    ├───frames       => Frames extracted for the nest detection
+    ├───Models       => Store the .pickle of the nest detection
     ├───Video1.MP4
     └───NestImage    => Picture of the nest detection (7)
 
