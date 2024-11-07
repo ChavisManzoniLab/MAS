@@ -25,7 +25,10 @@ dependencies = [
 'tensorpack==0.11',
 'tensorflow==2.10.0',
 'xlsxwriter',
-'gdown'
+'gdown',
+'torch',
+'torchvision', 
+'torchaudio',
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
