@@ -38,10 +38,11 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
 
  pip install git+https://github.com/ChavisManzoniLab/MAS.git
 
-All done ! 
-
 4. Install detectron2
 
 .. code-block:: console
 
  python -m pip install git+https://github.com/facebookresearch/detectron2.git
+
+All done ! 
+
