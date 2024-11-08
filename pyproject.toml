@@ -42,6 +42,6 @@ Homepage = "https://github.com/ChavisManzoniLab/MAS-PRT"
 Issues = "https://github.com/ChavisManzoniLab/MAS-PRT"
 
 
-[projects.scripts]
+[projects.gui-scripts]
 MAS = "MAS:main"
 mas = "MAS:main"
