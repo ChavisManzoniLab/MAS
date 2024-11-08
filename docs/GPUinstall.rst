@@ -80,4 +80,6 @@ Go to https://developer.nvidia.com/rdp/cudnn-archive
    :width: 700
 
 | Select this version
-
+| Download the .zip 
+| Unzip it, then copy and paste the content in C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7 or whever your CUDA is installed. 
+| It should be finally done !
