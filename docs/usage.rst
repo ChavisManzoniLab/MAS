@@ -5,7 +5,7 @@ To open the environment, use
 
 .. code-block:: console
 
-  cd MAS\\scripts\\activate
+  MAS\\scripts\\activate
 
 Once you are in the environment, you can launch the GUI by writing :
 
