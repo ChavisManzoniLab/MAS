@@ -15,7 +15,6 @@ dependencies = [
 'deeplabcut',
 'matplotlib==3.7.2',
 'numpy==1.24.3',
-'nvidia-cudnn-cu11',
 'opencv_contrib_python==4.8.0.76',
 'opencv_python==4.8.0.76',
 'pandas==2.0.3',
@@ -26,7 +25,10 @@ dependencies = [
 'tensorpack==0.11',
 'tensorflow==2.10.0',
 'xlsxwriter',
-'gdown'
+'gdown',
+'torch',
+'torchvision', 
+'torchaudio',
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -36,5 +38,10 @@ classifiers = [
 
 
 [project.urls]
-Homepage = "https://github.com/StraussBInserm/MAS"
-Issues = "https://github.com/StraussBInserm/MAS"
+Homepage = "https://github.com/ChavisManzoniLab/MAS-PRT"
+Issues = "https://github.com/ChavisManzoniLab/MAS-PRT"
+
+
+[projects.scripts]
+MAS = "MAS:main"
+mas = "MAS:main"

@@ -1,4 +1,4 @@
-Installation
+Installation for GPU
 =================
 
 Install Git : https://git-scm.com/downloads 
@@ -52,7 +52,13 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
 5. Install CUDA
 
 | A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
-| https://developer.nvidia.com/cuda-toolkit
+| I recommand trying with Cuda 11 at first
+| https://developer.nvidia.com/cuda-11-8-0-download-archive
+| 
+
+.. figure:: https://i.imgur.com/IRh68fu.png
+   :width: 500
+   This message might appear, just ignore it 
 
 .. note:: 
   Beware, Cuda version may be dependent of your GPU
@@ -62,9 +68,18 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
 
 See https://pytorch.org/get-started/locally/ to find the version that suit your CUDA
 
-.. note:: 
-   *Following line is for illustration purpose, and probably won't fit your CUDA and GPU*
-
 .. code-block:: console
 
  pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 
+
+7. Install Cudnn
+
+Go to https://developer.nvidia.com/rdp/cudnn-archive
+
+.. image:: https://i.imgur.com/k8PAL0g.jpeg
+   :width: 700
+
+| Select this version
+| Download the .zip 
+| Unzip it, then copy and paste the content in C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7 or whever your CUDA is installed. 
+| It should be finally done !
