@@ -469,7 +469,7 @@ def PRTAnalysis(video_path , detector_path = NESTDETECTOR,  use_backup = False,
     """
     files =  glob.glob(str(video_path + '/*.mp4'))
     if use_backup : 
-        with open( ROOT + '/models/nestDict.pkl', 'rb') as f:
+        with open( video_path + '/models/nestDict.pkl', 'rb') as f:
             nest_dict = pickle.load(f)    
     else:
         frame_extract(video_path=video_path, frame_per_vid = 20)

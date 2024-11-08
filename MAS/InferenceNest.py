@@ -200,8 +200,8 @@ def predict_nest(detector_path, image_dir, visual = False, nest_simplification =
     results['area'] = tuple(results['area'])
     results['rawpolygon'] = tuple(results['rawpolygon'])
     results['polygon'] = tuple(results['polygon'])
-    filename = ROOT
-    os.makedirs(str(filename), exist_ok=True)
+    filename = os.path.dirname(image_dir) 
+    os.makedirs(str(filename + '\\Models'), exist_ok=True)
     with open(filename+ '\\Models\\nestDict.pkl', 'wb') as f:
         pickle.dump(results, f)
     return results
