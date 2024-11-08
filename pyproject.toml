@@ -43,5 +43,5 @@ Issues = "https://github.com/ChavisManzoniLab/MAS-PRT"
 
 
 [projects.gui-scripts]
-MAS = "MAS:main"
-mas = "MAS:main"
+MAS = "MAS:GUI"
+mas = "MAS:GUI"
