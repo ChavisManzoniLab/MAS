@@ -1,4 +1,4 @@
-MAS GUI (Graphical User Interface)
+Working with MAS GUI
 ==============
 
 To open the environment, use
@@ -28,13 +28,14 @@ Functionality
 Main
 -----------
 1. Select folder
-  | Click on the grey button to select a folder where .MP4 of PRT videos. 
+  | Click on the grey button to select a folder where .MP4 of PRT videos are. 
   | The GUI will write down the path
   | The GUI will also write down the number of detected videos. 
-  | Nested folder are not taken in account
+.. warning::
+ Nested folder are not taken in account
 
 9. RUN
-  | Launch the pipeline on selected video.
+  | Launch the pipeline on selected video(s).
   | The process can be long, especially with numerous videos or absence of a GPU
   | The result will be outputted as shown in `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#id4>`_
 
@@ -90,12 +91,9 @@ Visualization
    :width: 600
 
 .. note::
-   Dam will be labeled in purple 
-
-   Pup will be labeled in red
-
-   Useful to spot bad detection
-
+  This option is especially useful to spot bad detection
+  ° Dam will be labeled in purple
+  ° Pup will be labeled in red
 
 Arborescence
 **************
