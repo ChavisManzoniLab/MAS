@@ -1,6 +1,9 @@
 Installation for CPU
 =================
 
+Requirements
+#############
+
 Install Git : https://git-scm.com/downloads 
 
 Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (INSTALL x64)
@@ -11,10 +14,14 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
    
     When installing Python, check the "Add Python to PATH"
 
+
+Installation
+#############
+
 | Open the terminal 
 | In the terminal => 
 
-1. Create an environnement using venv command in python. 
+1. Create an environnement using venv command in python :
 
 .. code-block:: console
 
@@ -32,13 +39,13 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
  cd MAS
  scripts\activate
  
-3. Install the packages 
+3. Install the packages : 
 
 .. code-block:: console
 
  pip install git+https://github.com/ChavisManzoniLab/MAS.git
 
-4. Install detectron2
+4. Install detectron2 :
 
 .. code-block:: console
 
