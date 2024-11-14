@@ -87,7 +87,7 @@ Visualization
   | If selected, will draw the infered DLC detection on each video
   | Results are saved in DLCTracking, see `Arborescence <https://mas.readthedocs.io/en/latest/usage.html#id4>`_
 
-.. image:: https://i.imgur.com/GObPK5s.jpeg
+.. image:: https://i.imgur.com/st1sWjZ.jpeg
    :width: 600
 
 .. note::
