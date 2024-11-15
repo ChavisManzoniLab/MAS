@@ -27,6 +27,7 @@ Summary
   index
   CPUinstall
   GPUinstall
+  preprocess
   usage
   model
   troubleshooting

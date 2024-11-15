@@ -1,6 +1,9 @@
 Installation for GPU
 =================
 
+Requirements
+#############
+
 Install Git : https://git-scm.com/downloads 
 
 Install Visual Studio C++ : `Visual Studio <https://visualstudio.microsoft.com/fr/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSFeaturesPage&passive=true&tailored=cplus&cid=2031#cplusplus>`_
@@ -16,10 +19,13 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
    
     When installing Python, check the "Add Python to PATH"
 
+Installation
+#############
+
 | Open the terminal 
 | In the terminal => 
 
-1. Create an environnement using venv command in python. 
+1. Create an environnement using venv command in python :
 
 .. code-block:: console
 
@@ -37,21 +43,21 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
  cd MAS
  scripts\activate
  
-3. Install the packages 
+3. Install the packages :
 
 .. code-block:: console
 
  pip install git+https://github.com/ChavisManzoniLab/MAS.git
 
-4. Install detectron2
+4. Install detectron2 :
 
 .. code-block:: console
 
  python -m pip install git+https://github.com/facebookresearch/detectron2.git
 
-5. Install CUDA
+5. Install CUDA :
 
-| A GPU is highly recommanded to speed up the analysis. To make use of the analysis with GPU, CUDA must be installed on your machine. 
+| CUDA must be installed on your machine. 
 | I recommand trying with Cuda 11 at first
 | https://developer.nvidia.com/cuda-11-8-0-download-archive
 | 
@@ -61,25 +67,27 @@ Install Python x64 3.9 https://www.python.org/downloads/release/python-3913/ (IN
    This message might appear, just ignore it 
 
 .. note:: 
-  Beware, Cuda version may be dependent of your GPU
+  Beware, CUDA version may be dependent of your GPU
 
 
-6. Install the good version of Torch 
+6. Install the good version of Torch :
 
-See https://pytorch.org/get-started/locally/ to find the version that suit your CUDA
+| See https://pytorch.org/get-started/locally/ to find the version that suit your CUDA
+| By default, with CUDA 11 : 
 
 .. code-block:: console
 
  pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 
 
-7. Install Cudnn
+
+7. Install Cudnn :
 
 Go to https://developer.nvidia.com/rdp/cudnn-archive
 
 .. image:: https://i.imgur.com/k8PAL0g.jpeg
    :width: 700
 
-| Select this version
-| Download the .zip 
-| Unzip it, then copy and paste the content in C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7 or whever your CUDA is installed. 
-| It should be finally done !
+1. Select this version (V8.9.7)
+2. Download the .zip 
+3. Unzip it, then copy and paste the content in C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.7 or whever your CUDA is installed. 
+4. It should be finally done !

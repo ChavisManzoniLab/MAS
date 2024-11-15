@@ -2,7 +2,7 @@ Models and How to change them
 =======
 
 .. Note::
-   Changing the model requires basics knowledges in developpement and may be a leap in complexity
+   Changing the model requires basic knowledge in developpement and may be a leap in complexity
 
 Summary
 ----------
@@ -58,15 +58,17 @@ Open the config.yaml with any text editor. It should look like this
 
 .. _code_directive:
 
-.. image:: https://i.imgur.com/IldAwqe.png
-   :width: 400
+.. image:: https://i.imgur.com/Ct0Gdy1.png
+   :width: 600
 
 .. _code_directive:
 
-.. image:: https://i.imgur.com/Ct0Gdy1.png
-   :width: 600
+.. image:: https://i.imgur.com/IldAwqe.png
+   :width: 400
+
+
 .. Note::
-   Don't be afraid if you have differents colors than on the pictures, It may vary
+   Don't be afraid if you have differents colors than on the pictures, it may vary
 
 | Now, it's up to you! Happy training !
 | See how to train a maDLC model : https://deeplabcut.github.io/DeepLabCut/docs/maDLC_UserGuide.html
