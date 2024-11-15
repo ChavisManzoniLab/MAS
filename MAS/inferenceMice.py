@@ -3,11 +3,17 @@ from os import path
 import shutil
 import deeplabcut
 from MAS.config import *
+import glob
 
 
 def inference_mice(video_path):
     dest_folder = str(os.path.dirname(video_path) + '\csv')
-    deeplabcut.analyze_videos(config = DLCDETECTOR, videos = video_path, videotype = '.mp4' , shuffle = 1, save_as_csv=True, destfolder = dest_folder)
+    vids =  glob.glob(str(video_path + '/*.mp4')) 
+    for vid in vids:
+        try:
+            deeplabcut.analyze_videos(config = DLCDETECTOR, videos = vid, videotype = '.mp4' , shuffle = 1, save_as_csv=True, destfolder = dest_folder)
+        except OSError:
+            continue
 
 def show_pred(video_path, pcutoff):
     csv_folder = str(os.path.dirname(video_path) + '\csv')

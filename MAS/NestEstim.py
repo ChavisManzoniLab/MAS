@@ -12,11 +12,7 @@ import stat
 import shutil
 from statistics import mean
 
-incr = list(range(5,101,5))
-incr.insert(0,4)
-incr.insert(0,3)
-incr.insert(0,2)
-incr.insert(0,1)
+incr = list(range(1,101,1))
 
 pathToVid = r'C:\Users\bs\Desktop\zad\vido'
 detectorPath = r"C:\Users\bs\LabGym\Lib\site-packages\LabGym\detectors\Nest10"
@@ -44,14 +40,20 @@ for vid in dicolist[0]['id']:
     resultdic['video'].append(vid)
     resultdic['areadiff'].append(resultlist)
 
-print(resultdic.items())
 
-for video in resultdic["video"]:
-    plt.plot(incr,resultdic['areadiff'][video], label=video)
+with open('nestDict2.pkl', 'wb') as f:
+    pickle.dump(resultdic, f)
+
+avg = []
+
+for i in incr:
+    avg[i] = mean([item[i] for item in resultdic['areadiff']])
+
+plt.plot(incr,avg)
 
 plt.xlabel('Iter')
 plt.axhline(y=0, color='black', linestyle='--')
 plt.ylabel('Result')
-plt.title('Results of Videos')
+plt.title(' ')
 plt.legend()
 plt.show()
