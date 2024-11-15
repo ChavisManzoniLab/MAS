@@ -9,4 +9,6 @@ Change the colors to grayscale
 
 To do this, we recommand using HandBrake
 
-TODO
+https://handbrake.fr/
+
+It allows to batch process files. It also allow to crop the videos, which can increase quality of detection
