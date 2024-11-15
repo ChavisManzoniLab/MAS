@@ -22,12 +22,3 @@ Installation
      </p>
    </details> </header>
 
-
-     <header> <details> 
-   
-     <summary style="font-weight:bold"> LAYOUT </summary>
-     <p>
-          &nbsp;&nbsp;BLA <br>
-         
-     </p>
-   </details> </header>
